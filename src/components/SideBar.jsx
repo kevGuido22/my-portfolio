@@ -15,7 +15,7 @@ export function SideBar() {
 
     return (
         <div
-            className={`w-[100%] h-screen bg-dark-custom/80 ${isOpen ? "left-0" : "left-[-130rem]"} fixed top-0 z-40 p-10 py-12 bg-opacity-100 bg-clip-padding backdrop-filter backdrop-blur-md transition-all duration-200 ease-in-out justify-between flex flex-col`}
+            className={`w-[100%] h-screen bg-dark-custom/80 ${isOpen ? "left-0" : "left-[-500rem]"} fixed top-0 z-40 p-10 py-12 bg-opacity-100 bg-clip-padding backdrop-filter backdrop-blur-md transition-all duration-150 ease-in-out justify-between flex flex-col`}
         >
             <ul className="grid gap-10 text-white font-primary text-xl ">
                 <li>

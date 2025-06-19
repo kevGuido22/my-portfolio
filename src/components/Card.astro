@@ -13,36 +13,29 @@ interface Props {
 }
 
 const { title, img, description, tags, web, gitHub } = Astro.props;
-
 ---
 
-<!--card grid gap-4 rounded-lg border bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10 overflow-hidden p-[0.1rem]  -->
 <div
     class="card-box-shadow grid rounded-lg overflow-hidden bg-white/5 backdrop-blur-md backdrop-filter"
 >
-    <img
-        src={img}
-        alt=""
-        class="rounded-lg max-h-[20rem] w-full object-cover"
-    />
-    <div class="p-6">
-        <h3 class="text-white font-primary text-xl font-bold">
-            {title}
-        </h3>
-        <p class="text-gray-300 font-primary">
-            {description}
-        </p>
-        <div class="flex flex-grow items-end">
-            <div class="mt-4 items-center flex gap-2 flex-wrap ">
-                {
-                    tags.map((tag) => (
-                        <Tag name={tag} />
-                    ))
-                }
+    
+    <div class=" grid grid-rows-[auto_1fr]">
+        <img src={img} alt="" class="rounded-lg h-[17rem] w-full object-cover" />
+        <div class="h-full self-start mt-4 p-6">
+            <h3 class="text-white font-primary text-xl font-bold">
+                {title}
+            </h3>
+            <p class="text-gray-300 font-primary">
+                {description}
+            </p>
+            <div class="flex flex-grow items-end">
+                <div class="mt-4 items-center flex gap-2 flex-wrap">
+                    {tags.map((tag) => <Tag name={tag} />)}
+                </div>
             </div>
         </div>
         <div
-            class="grid grid-cols-[repeat(auto-fit,_minmax(150px,_1fr))] gap-2 mt-4"
+            class="grid grid-cols-[repeat(auto-fit,_minmax(150px,_1fr))] gap-2 self-end px-6 mb-6"
         >
             {
                 web ? (
@@ -76,8 +69,4 @@ const { title, img, description, tags, web, gitHub } = Astro.props;
     .card::after {
         @apply content-['tailwind'] text-white w-[94%] h-[94%] absolute top-[3%] left-[3%] flex justify-center items-center
     } */
-
-
-
-    
 </style>

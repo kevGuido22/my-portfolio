@@ -37,21 +37,27 @@ import HorizontalCard from "./HorizontalCard.astro";
         <div
             class="grid grid-cols-[repeat(auto-fill,_minmax(350px,_1fr))] gap-4 mt-4"
         >
-            <!-- <Card
-                title={"Titulo del proyecto"}
-                img={"../../public/images/javascriptEloquent.jpg"}
-                description={"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere dolorum commodi minus, sapiente animi laboriosam quam praesentium nesciunt iure id, ipsa tenetur laudantium eaque in porro doloremque distinctio tempore quibusdam."}
-                tags={["HTML", "CSS"]}
-                web={'https://kevguido22.github.io/eloquent-javascript/'}
-                gitHub={'dddede'}
+            <Card
+                title={"Suru - Frontend"}
+                img={"/images/suru-frontend.png"}
+                description={"SURU is a real estate web platform developed as a university project in collaboration with classmates. We used React for the frontend and consumed an API that we also built ourselves. For HTTP requests, we used Axios, and we managed navigation with React Router, implementing both public and private routes.We also used Tailwind CSS for styling. SURU includes features like user login, user settings, an appointment system, property filters, an admin dashboard, dark mode, and more."}
+                tags={[
+                    "HTML",
+                    "TailwindCSS",
+                    "React",
+                    "JavaScript",
+                    "React Router",
+                ]}
+                web={"https://suru-development.vercel.app/"}
+                gitHub={"https://github.com/Agile-Innovators/SURU-Development"}
             />
             <Card
-                title={"Titulo del proyecto"}
-                img={"../../public/images/javascriptEloquent.jpg"}
-                description={"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere dolorum commodi minus, sapiente animi laboriosam quam praesentium nesciunt iure id, ipsa tenetur laudantium eaque in porro doloremque distinctio tempore quibusdam."}
-                tags={["HTML", "CSS"]}
-                gitHub={'dede'}
-            /> -->
+                title={"Suru - Backend"}
+                img={"/images/api-laravel.jpg"}
+                description={"SURU Backend is a RESTful API that powers the frontend of our SURU platform. The backend is built with Laravel and uses a MySQL database.We implemented features such as authentication with JWT, as well as seeders and migrations for managing the database structure and test data.We also use Cloudinary to store and manage uploaded images."}
+                tags={["Laravel", "PHP", "MySQL", "Cloudinary", "JWT", "RESTful API"]}
+                gitHub={"https://github.com/Agile-Innovators/suru-backend"}
+            />
         </div>
     </div>
 </section>
