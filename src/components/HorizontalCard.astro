@@ -3,6 +3,7 @@ import Tag from "./Tag.astro";
 import MainButton from "./MainButton.astro";
 import { WebIcon } from "../icons/icons";
 import { GithubIcon } from "../icons/icons";
+
 interface Props {
     img: string;
     title: string;
@@ -14,18 +15,20 @@ interface Props {
 
 const { title, img, description, tags, web, gitHub } = Astro.props;
 
+console.log(tags);
 ---
 
-<!--card grid gap-4 rounded-lg border bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10 overflow-hidden p-[0.1rem]  -->
 <div
-    class="card-box-shadow grid rounded-lg overflow-hidden bg-white/5 backdrop-blur-md backdrop-filter"
+    class="card-box-shadow grid sm:grid-cols-2 rounded-lg overflow-hidden w-full mt-4 h-min-[50rem] relative bg-white/5 backdrop-blur-md backdrop-filter hover:shadow-xl transition-all duration-300 ease-in-out"
 >
-    <img
-        src={img}
-        alt=""
-        class="rounded-lg max-h-[20rem] w-full object-cover"
-    />
-    <div class="p-6">
+    <div class="sm:order-2">
+        <img
+            src={img}
+            alt=""
+            class=" h-full object-cover object-left"
+        />
+    </div>
+    <div class="p-6 order-1 gap-2 flex flex-col">
         <h3 class="text-white font-primary text-xl font-bold">
             {title}
         </h3>
@@ -33,12 +36,8 @@ const { title, img, description, tags, web, gitHub } = Astro.props;
             {description}
         </p>
         <div class="flex flex-grow items-end">
-            <div class="mt-4 items-center flex gap-2 flex-wrap ">
-                {
-                    tags.map((tag) => (
-                        <Tag name={tag} />
-                    ))
-                }
+            <div class="mt-4 items-center flex gap-2 flex-wrap">
+                {tags.map((tag) => <Tag name={tag} />)}
             </div>
         </div>
         <div
@@ -66,18 +65,3 @@ const { title, img, description, tags, web, gitHub } = Astro.props;
     <span class="span-3"></span>
     <span class="span-4"></span>
 </div>
-<!-- </div> -->
-
-<style>
-    /* .card::before {
-        @apply content-[''] absolute bg-[conic-gradient(#04b0ee_20deg,transparent_120deg)] w-full h-full top-[-25%] left-[25%] z-[-1];
-    }
-
-    .card::after {
-        @apply content-['tailwind'] text-white w-[94%] h-[94%] absolute top-[3%] left-[3%] flex justify-center items-center
-    } */
-
-
-
-    
-</style>

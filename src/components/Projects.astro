@@ -1,0 +1,52 @@
+---
+import Card from "./Card.astro";
+import HorizontalCard from "./HorizontalCard.astro";
+
+---
+
+<section class="sp-8 p-4 mt-36" id="projects">
+    <div class="max-w-screen-lg m-auto gap-2 grid">
+        <div>
+            <h2 class="text-white text-5xl text-center font-primary font-semibold">
+                Projects
+            </h2>
+            <p class="text-white font-primary mt-4">
+                Some of the projects I have worked. I used different technologies and skills in frontend and backend development, as well as in UX/UI design and devOps. This allowed me to solve technical challenges and create solutions in different areas of software development.
+            </p>
+        </div>
+        <HorizontalCard
+            title={"Spotify Clone"}
+            img={"../../public/images/spotify.webp"}
+            description={"This is a Spotify clone built using the Astro framework and TypeScript. React components were also added to apply the concept of Islands of Interactivity offered by Astro. Astro Transitions were used to improve the navigation experience between pages. For managing the global state, the Zustand library was chosen, making it easy and efficient to handle the application’s state."}
+            tags={[
+                "HTML",
+                "TypeScript",
+                "React",
+                "Astro",
+                "Tailwind",
+                "Zustand",
+            ]}
+            web={'https://spotify-clone-rho-bay.vercel.app/'}
+            gitHub={'https://github.com/kevGuido22/spotify-clone'}
+        />
+        <div
+            class="grid grid-cols-[repeat(auto-fill,_minmax(350px,_1fr))] gap-4 mt-4"
+        >
+            <!-- <Card
+                title={"Titulo del proyecto"}
+                img={"../../public/images/javascriptEloquent.jpg"}
+                description={"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere dolorum commodi minus, sapiente animi laboriosam quam praesentium nesciunt iure id, ipsa tenetur laudantium eaque in porro doloremque distinctio tempore quibusdam."}
+                tags={["HTML", "CSS"]}
+                web={'https://kevguido22.github.io/eloquent-javascript/'}
+                gitHub={'dddede'}
+            />
+            <Card
+                title={"Titulo del proyecto"}
+                img={"../../public/images/javascriptEloquent.jpg"}
+                description={"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere dolorum commodi minus, sapiente animi laboriosam quam praesentium nesciunt iure id, ipsa tenetur laudantium eaque in porro doloremque distinctio tempore quibusdam."}
+                tags={["HTML", "CSS"]}
+                gitHub={'dede'}
+            /> -->
+        </div>
+    </div>
+</section>

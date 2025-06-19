@@ -1,0 +1,17 @@
+---
+interface Props{
+    img: string,
+    title: string
+}
+
+const { img, title } = Astro.props;
+
+---
+
+<div
+    class="card-skill w-28 flex flex-col justify-center items-center gap-2 p-4 rounded-md bg-black/10 bg-clip-padding backdrop-blur-md backdrop-filter border border-gray-100/40 border-t-gray-50/5"
+>
+    <img src={img} alt={`${title}-image`} class="h-10 aspect-square object-contain">
+    <p class="text-white">{title}</p>
+     <div class="shine"></div>
+</div>
