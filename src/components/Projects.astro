@@ -20,6 +20,22 @@ import HorizontalCard from "./HorizontalCard.astro";
             </p>
         </div>
         <HorizontalCard
+            title={"SpringBoot micro-services (in development)"}
+            img={"/images/micro-services.jpg"}
+            description={"This is a practice project built to learn and explore microservices architecture using Spring Boot. Each microservice is containerized with Docker, and database migrations are managed with Flyway to ensure version control. An API Gateway was implemented to handle all requests through a single entry point, improving scalability and routing. To ensure resilience, Resilience4j was added to manage failures when services do not respond. Keycloak was integrated for authentication and authorization, providing centralized and secure identity management across all services."}
+            tags={[
+                "SpringBoot",
+                "API Gateway",
+                "Flyway",
+                "Docker",
+                "Resilience4j",
+                "Keycloak",
+                "SpringCloud",
+                "React",
+            ]}
+            gitHub={"https://github.com/kevGuido22/microservices-project"}
+        />
+        <HorizontalCard
             title={"Spotify Clone"}
             img={"/images/spotify.webp"}
             description={"This is a Spotify clone built using the Astro framework and TypeScript. React components were also added to apply the concept of Islands of Interactivity offered by Astro. Astro Transitions were used to improve the navigation experience between pages. For managing the global state, the Zustand library was chosen, making it easy and efficient to handle the application’s state."}
