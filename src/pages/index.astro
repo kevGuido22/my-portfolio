@@ -45,20 +45,20 @@ import { SideBar } from "../components/SideBar.jsx";
         background-attachment: fixed;
     }
 
-    #experience {
+    [id] {
         scroll-margin-top: 100px;
     }
 
-    #projects {
-        scroll-margin-top: 100px;
+    .section {
+        @apply mt-36 p-4 md:p-6;
     }
 
-    #skills {
-        scroll-margin-top: 100px;
+    .container {
+        @apply max-w-screen-lg mx-auto;
     }
 
-    #aboutme {
-        scroll-margin-top: 100px;
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Red Hat Display', sans-serif;
     }
 
     @media (prefers-reduced-motion: reduce) {
