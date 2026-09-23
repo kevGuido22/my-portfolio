@@ -1255,7 +1255,7 @@ Al completar cada fase de implementación, marcarla como ☑ en la siguiente tab
 | 7 | Skills | ☑ |
 | 8 | Projects | ☑ |
 | 9 | Footer | ☑ |
-| 10 | Motion & Transiciones | ☐ |
+| 10 | Motion & Transiciones | ☑ |
 | 11 | Responsive | ☐ |
 | 12 | Accesibilidad | ☐ |
 | 13 | Limpieza y Build Final | ☐ |

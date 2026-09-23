@@ -25,6 +25,30 @@ import { SideBar } from "../components/SideBar.jsx";
     <Footer />
 </Layout>
 
+<script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+        const sections = document.querySelectorAll('section');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('section-enter-active');
+                } else {
+                    entry.target.classList.remove('section-enter-active');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        sections.forEach(section => {
+            section.classList.add('section-enter');
+            observer.observe(section);
+        });
+    });
+</script>
+
 <style is:global>
     html {
         scroll-behavior: smooth;
@@ -61,11 +85,31 @@ import { SideBar } from "../components/SideBar.jsx";
         font-family: 'Red Hat Display', sans-serif;
     }
 
+    .section-enter {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+
+    .section-enter-active {
+        opacity: 1;
+        transform: translateY(0);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
     @media (prefers-reduced-motion: reduce) {
         *, *::before, *::after {
             animation-duration: 0.01ms !important;
             animation-iteration-count: 1 !important;
             transition-duration: 0.01ms !important;
+        }
+        .section-enter {
+            opacity: 1;
+            transform: none;
+        }
+        .section-enter-active {
+            opacity: 1;
+            transform: none;
+            transition: none;
         }
     }
 </style>
