@@ -1253,7 +1253,7 @@ Al completar cada fase de implementación, marcarla como ☑ en la siguiente tab
 | 5 | Bento / About | ☑ |
 | 6 | Experience | ☑ |
 | 7 | Skills | ☑ |
-| 8 | Projects | ☐ |
+| 8 | Projects | ☑ |
 | 9 | Footer | ☐ |
 | 10 | Motion & Transiciones | ☐ |
 | 11 | Responsive | ☐ |
