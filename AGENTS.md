@@ -1247,7 +1247,7 @@ Al completar cada fase de implementación, marcarla como ☑ en la siguiente tab
 |------|-------------|--------|
 | 0 | Design Tokens | ☑ |
 | 1 | Fondo Global | ☑ |
-| 2 | Navegación | ☐ |
+| 2 | Navegación | ☑ |
 | 3 | Layout CSS Global | ☐ |
 | 4 | Hero | ☐ |
 | 5 | Bento / About | ☐ |
