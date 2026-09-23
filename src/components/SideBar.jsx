@@ -21,7 +21,7 @@ export function SideBar() {
                 <li>
                     <a
                         href="#"
-                        className="glow-hover flex gap-2 items-center"
+                        className="flex gap-2 items-center"
                         onClick={closeMenu}
                     >
                         <HomeIcon />
@@ -31,7 +31,7 @@ export function SideBar() {
                 <li>
                     <a
                         href="#experience"
-                        className="glow-hover flex gap-2 items-center"
+                        className="flex gap-2 items-center"
                         onClick={closeMenu}
                     >
                         <BriefCaseIcon />
@@ -41,7 +41,7 @@ export function SideBar() {
                 <li>
                     <a
                         href="#projects"
-                        className="glow-hover flex gap-2 items-center"
+                        className="flex gap-2 items-center"
                         onClick={closeMenu}
                     >
                         <ClipBoardIcon />
@@ -51,7 +51,7 @@ export function SideBar() {
                 <li>
                     <a
                         href="#skills"
-                        className="glow-hover flex gap-2 items-center"
+                        className="flex gap-2 items-center"
                         onClick={closeMenu}
                     >
                         <LightningIcon />
@@ -61,7 +61,7 @@ export function SideBar() {
                 <li>
                     <a
                         href="#aboutme"
-                        className="glow-hover flex gap-2 items-center"
+                        className="flex gap-2 items-center"
                         onClick={closeMenu}
                     >
                         <StarIcon />
@@ -71,8 +71,8 @@ export function SideBar() {
             </ul>
             <div className="border-t-[1px] grid gap-10 pt-8">
                 <a
-                    href="/public/Resume.pdf"
-                    className="glow-hover flex gap-2 items-center text-white text-xl"
+                    href="/CV.pdf"
+                    className="flex gap-2 items-center text-white text-xl"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
@@ -81,16 +81,16 @@ export function SideBar() {
 
                 <a
                     href="https://www.linkedin.com/in/kevin-guido-urbina-2456aa280/"
-                    className="glow-hover flex gap-2 items-center text-white text-xl"
+                    className="flex gap-2 items-center text-white text-xl"
                     target="_blank"
                 >
                     <LinkedInIcon />
-                    LinkdIn{" "}
+                    LinkedIn{" "}
                 </a>
 
                 <a
                     href="https://github.com/kevGuido22"
-                    className="glow-hover flex gap-2 items-center text-white text-xl"
+                    className="flex gap-2 items-center text-white text-xl"
                     target="_blank"
                 >
                     <GithubIcon /> Github

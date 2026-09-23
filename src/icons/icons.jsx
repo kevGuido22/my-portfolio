@@ -214,3 +214,51 @@ export const ResumeIcon = () => {
         </svg>
     );
 };
+
+export const AwsIcon = () => {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="32" height="32" fill="none">
+            <path d="M24 0L0 48h48L24 0zm10.5 34.5h-5.25v-12h5.25v12zm-10.5 0h-5.25v-12h5.25v12zm10.5-17.25h-5.25v-5.25h5.25v5.25zm-10.5 0h-5.25v-5.25h5.25v5.25z" fill="#FF9900"/>
+            <path d="M24 0L0 48h48L24 0zm0 3h21L24 6l-21 0h21v3h-21L3 9h6.75L24 3.75 31.25 9H38V6h-6.75L24 3.75V3z" fill="#232931"/>
+        </svg>
+    );
+};
+
+export const PostgreSqlIcon = () => {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="32" height="32" fill="none">
+            <path d="M24 0L3 48h42L24 0zm0 5.5L37.89 42.5H10.11L24 5.5z" fill="#336791"/>
+            <path d="M24 8.5l-11.5 24h23L24 8.5zm0 4.5l-8 15h16l-8-15z" fill="#41A3D9"/>
+        </svg>
+    );
+};
+
+export const GitIcon = () => {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="32" height="32" fill="none">
+            <path d="M24 0C10.7 0 0 10.7 0 24c0 10.7 6.9 19.8 16.4 22.9.6.1 1.1-.3 1.1-.8 0-.4 0-1.4 0-2.8-6.7 1.5-8.1-3.2-8.1-3.2-.6-1.5-1.5-1.9-1.5-1.9-1.2-.8.1-.8.1-.8 1.3.1 2 1.3 2 1.3 1.2 2.1 3 1.5 3.7 1.2.1-.9.5-1.5.9-1.8-3.1-.4-6.4-1.6-6.4-7 0-1.6.6-2.9 1.5-3.9-.1-.4-.7-1.8 0-3.7 0 0 1.2-.4 3.8 1.4 1.1-.3 2.3-.5 3.5-.5s2.4.2 3.5.5c2.6-1.8 3.8-1.4 3.8-1.4.7 1.9.3 3.3 0 3.7.9 1 1.5 2.3 1.5 3.7 0 5.4-3.3 6.6-6.5 7 .5.4.9 1.2.9 2.4 0 1.7 0 3.1 0 3.5 0 .5.4 1.1 1.1.8C41.1 43.8 48 34.7 48 24c0-13.3-10.7-24-24-24z" fill="#F05033"/>
+        </svg>
+    );
+};
+
+export const RestApiIcon = () => {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="32" height="32" fill="none">
+            <circle cx="24" cy="24" r="20" stroke="#D4AF6A" strokeWidth="2"/>
+            <path d="M18 24h12M24 18v12" stroke="#D4AF6A" strokeWidth="2" strokeLinecap="round"/>
+            <circle cx="24" cy="24" r="6" stroke="#D4AF6A" strokeWidth="2"/>
+        </svg>
+    );
+};
+
+export const MicroservicesIcon = () => {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="32" height="32" fill="none">
+            <rect x="10" y="10" width="12" height="12" rx="2" stroke="#6C8EFF" strokeWidth="2"/>
+            <rect x="26" y="10" width="12" height="12" rx="2" stroke="#6C8EFF" strokeWidth="2"/>
+            <rect x="10" y="26" width="12" height="12" rx="2" stroke="#6C8EFF" strokeWidth="2"/>
+            <rect x="26" y="26" width="12" height="12" rx="2" stroke="#6C8EFF" strokeWidth="2"/>
+            <circle cx="24" cy="24" r="3" fill="#6C8EFF"/>
+        </svg>
+    );
+};

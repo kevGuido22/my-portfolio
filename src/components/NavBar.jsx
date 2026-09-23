@@ -1,7 +1,7 @@
 export function NavBar() {
     return (
         <nav className="fixed hidden items-center gap-10 mt-12 px-8 py-3 border bg-surface/20 rounded-md bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-100 border-white/10 left-1/2 transform -translate-x-1/2 z-10 sm:flex">
-            <ul class="flex gap-6 text-white font-primary">
+                    <ul className="flex gap-6 text-white font-primary">
                 <li>
                     <a href="#" className="hover:text-gold transition-colors duration-300">
                         Home

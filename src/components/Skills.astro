@@ -1,69 +1,99 @@
 ---
 import SkillCard from "./SkillCard.astro";
+import {
+    AwsIcon,
+    PostgreSqlIcon,
+    GitIcon,
+    RestApiIcon,
+    MicroservicesIcon,
+} from "../icons/icons";
 ---
 
-<section id="skills" class="mt-36 p-4 md:p-4" >
-    <div class="max-w-screen-lg m-auto gap-2 grid">
-        <h2 class="text-white text-5xl text-center font-primary font-semibold">Skills</h2>
-        <!-- <div
-            class="grid grid-cols-[repeat(auto-fit,_minmax(100px,_1fr))] gap-4 mt-4 justify-items-center"
-        > -->
-            <div
-            class="flex flex-row flex-wrap gap-4 mt-4 w-full justify-center"
-        >
-            <SkillCard
-                title={"HTML"}
-                img={"/images/html-icon.png"}
-            />
-            <SkillCard title={"CSS"} img={"/images/css-icon.png"} />
-            <SkillCard
-                title={"JavaScript"}
-                img={"/images/js-icon.png"}
-            />
-            <SkillCard
-                title={"Typescript"}
-                img={"/images/TS-icon.png"}
-            />
-            <SkillCard
-                title={"React"}
-                img={"/images/react-icon.png"}
-            />
-            <SkillCard
-                title={"SASS"}
-                img={"/images/sass-icon.png"}
-            />
-            
-            
-            <SkillCard
-                title={"TailwindCSS"}
-                img={"/images/tailwindcss-icon.png"}
-            />
-            <SkillCard title={"PHP"} img={"/images/php-icon.png"} />
-            <SkillCard
-                title={"Laravel"}
-                img={"/images/laravel-icon.png"}
-            />
-            <SkillCard
-                title={"MySQL"}
-                img={"/images/sql-icon.png"}
-            />
-            <!-- <SkillCard
-                title={"Figma"}
-                img={"/images/figma-icon.png"}
-            /> -->
-            
-            <SkillCard
-                title={"Java"}
-                img={"/images/Java-icon.png"}
-            />
-            <SkillCard
-                title={"SpringBoot"}
-                img={"/images/SpringBoot-icon.png"}
-            />
-            <SkillCard
-                title={"Docker"}
-                img={"/images/Docker-icon.png"}
-            />
+<section id="skills" class="section">
+    <div class="max-w-screen-lg m-auto">
+        <h2 class="text-white text-5xl text-center font-primary font-semibold mb-16">Skills</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div>
+                <h3 class="text-gold text-xl font-primary mb-6 tracking-wider">Backend</h3>
+                <div class="grid grid-cols-2 gap-4">
+                    <SkillCard title="Java">
+                        <img src="/images/Java-icon.png" alt="Java icon" class="h-10 aspect-square object-contain">
+                    </SkillCard>
+                    <SkillCard title="Spring Boot">
+                        <img src="/images/SpringBoot-icon.png" alt="Spring Boot icon" class="h-10 aspect-square object-contain">
+                    </SkillCard>
+                    <SkillCard title="PHP">
+                        <img src="/images/php-icon.png" alt="PHP icon" class="h-10 aspect-square object-contain">
+                    </SkillCard>
+                    <SkillCard title="Laravel">
+                        <img src="/images/laravel-icon.png" alt="Laravel icon" class="h-10 aspect-square object-contain">
+                    </SkillCard>
+                    <SkillCard title="REST APIs">
+                        <RestApiIcon />
+                    </SkillCard>
+                    <SkillCard title="Microservices">
+                        <MicroservicesIcon />
+                    </SkillCard>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="text-gold text-xl font-primary mb-6 tracking-wider">Frontend</h3>
+                <div class="grid grid-cols-2 gap-4">
+                    <SkillCard title="React">
+                        <img src="/images/react-icon.png" alt="React icon" class="h-10 aspect-square object-contain">
+                    </SkillCard>
+                    <SkillCard title="JavaScript">
+                        <img src="/images/js-icon.png" alt="JavaScript icon" class="h-10 aspect-square object-contain">
+                    </SkillCard>
+                    <SkillCard title="TypeScript">
+                        <img src="/images/TS-icon.png" alt="TypeScript icon" class="h-10 aspect-square object-contain">
+                    </SkillCard>
+                    <SkillCard title="HTML">
+                        <img src="/images/html-icon.png" alt="HTML icon" class="h-10 aspect-square object-contain">
+                    </SkillCard>
+                    <SkillCard title="CSS">
+                        <img src="/images/css-icon.png" alt="CSS icon" class="h-10 aspect-square object-contain">
+                    </SkillCard>
+                    <SkillCard title="SASS">
+                        <img src="/images/sass-icon.png" alt="SASS icon" class="h-10 aspect-square object-contain">
+                    </SkillCard>
+                    <SkillCard title="TailwindCSS">
+                        <img src="/images/tailwindcss-icon.png" alt="TailwindCSS icon" class="h-10 aspect-square object-contain">
+                    </SkillCard>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="text-gold text-xl font-primary mb-6 tracking-wider">Cloud / DevOps</h3>
+                <div class="grid grid-cols-2 gap-4">
+                    <SkillCard title="AWS">
+                        <AwsIcon />
+                    </SkillCard>
+                    <SkillCard title="Docker">
+                        <img src="/images/Docker-icon.png" alt="Docker icon" class="h-10 aspect-square object-contain">
+                    </SkillCard>
+                    <SkillCard title="Git">
+                        <GitIcon />
+                    </SkillCard>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="text-gold text-xl font-primary mb-6 tracking-wider">Databases</h3>
+                <div class="grid grid-cols-2 gap-4">
+                    <SkillCard title="PostgreSQL">
+                        <PostgreSqlIcon />
+                    </SkillCard>
+                    <SkillCard title="MySQL">
+                        <img src="/images/sql-icon.png" alt="MySQL icon" class="h-10 aspect-square object-contain">
+                    </SkillCard>
+                    <SkillCard title="SQL">
+                        <img src="/images/sql-icon.png" alt="SQL icon" class="h-10 aspect-square object-contain">
+                    </SkillCard>
+                </div>
+            </div>
         </div>
     </div>
 </section>

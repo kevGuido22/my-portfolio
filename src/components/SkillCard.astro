@@ -1,17 +1,35 @@
 ---
 interface Props{
-    img: string,
-    title: string
+    title: string;
 }
 
-const { img, title } = Astro.props;
-
+const { title } = Astro.props;
 ---
 
 <div
-    class="card-skill w-28 flex flex-col justify-center items-center gap-2 p-4 rounded-md bg-black/10 bg-clip-padding backdrop-blur-md backdrop-filter border border-gray-100/40 border-t-gray-50/5"
+    class="skill-card flex flex-col justify-center items-center gap-3 p-5 rounded-lg bg-surface border border-border hover:border-gold hover:-translate-y-1 transition-all duration-300"
 >
-    <img src={img} alt={`${title}-image`} class="h-10 aspect-square object-contain">
-    <p class="text-white">{title}</p>
-     <div class="shine"></div>
+    <slot />
+    <p class="text-text-secondary text-sm font-primary text-center">{title}</p>
 </div>
+
+<style>
+    .skill-card {
+        transition: border-color 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .skill-card:hover {
+        transform: translateY(-2px);
+        border-color: var(--border-gold);
+        background-color: var(--glass-hover);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .skill-card {
+            transition: none;
+        }
+        .skill-card:hover {
+            transform: none;
+        }
+    }
+</style>

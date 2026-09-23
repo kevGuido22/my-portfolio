@@ -15,7 +15,7 @@ interface Props {
 
 const { title, img, description, tags, web, gitHub } = Astro.props;
 
-console.log(tags);
+
 ---
 
 <div
@@ -32,9 +32,9 @@ console.log(tags);
         <h3 class="text-white font-primary text-xl font-bold">
             {title}
         </h3>
-        <p class="text-gray-300 font-primary">
-            {description}
-        </p>
+            <p class="text-text-secondary font-primary">
+                {description}
+            </p>
         <div class="flex flex-grow items-end">
             <div class="mt-4 items-center flex gap-2 flex-wrap">
                 {tags.map((tag) => <Tag name={tag} />)}
@@ -59,9 +59,3 @@ console.log(tags);
             }
         </div>
     </div>
-    <!-- <span class="border-span-top"></span> -->
-    <span class="span-1"></span>
-    <span class="span-2"></span>
-    <span class="span-3"></span>
-    <span class="span-4"></span>
-</div>
