@@ -5,14 +5,29 @@ export default {
         extend: {
             backgroundImage: {
                 "header-gradient":
-                    "linear-gradient(180deg, rgba(2,31,95,1) 0%, rgba(2,14,46,1) 45%, rgba(9,9,9,1) 100%)",
+                    "linear-gradient(180deg, rgba(212,175,106,.12) 0%, rgba(108,142,255,.06) 50%, #050505 100%)",
             },
             fontFamily: {
 				primary: ['Red Hat Display', 'sans-serif']
 			},
             colors:{
-                "dark-custom": "#090909",
-                "tag": "#141414"
+                "main": "#050505",
+                "background": "#050505",
+                "background-secondary": "#0A0A0A",
+                "surface": "#0F0F0F",
+                "surface-elevated": "#151515",
+                "gold": "#D4AF6A",
+                "gold-light": "#E6C98A",
+                "gold-dark": "#9E7A3A",
+                "navy": "#0B1220",
+                "blue-accent": "#6C8EFF",
+                "text-primary": "#F5F5F5",
+                "text-secondary": "#A1A1AA",
+                "text-muted": "#71717A",
+                "border": "rgba(255,255,255,0.10)",
+                "border-gold": "rgba(212,175,106,0.35)",
+                "glass": "rgba(255,255,255,0.04)",
+                "glass-hover": "rgba(255,255,255,0.07)",
             }
         },
     },

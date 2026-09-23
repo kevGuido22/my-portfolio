@@ -37,6 +37,39 @@ const { title } = Astro.props;
 
             gtag("config", "G-QG12NKBYDL");
         </script>
+        <style is:global>
+            :root {
+                /* Background */
+                --background: #050505;
+                --background-secondary: #0A0A0A;
+
+                /* Surface */
+                --surface: #0F0F0F;
+                --surface-elevated: #151515;
+
+                /* Gold */
+                --gold: #D4AF6A;
+                --gold-light: #E6C98A;
+                --gold-dark: #9E7A3A;
+
+                /* Navy / Blue */
+                --navy: #0B1220;
+                --blue-accent: #6C8EFF;
+
+                /* Text */
+                --text-primary: #F5F5F5;
+                --text-secondary: #A1A1AA;
+                --text-muted: #71717A;
+
+                /* Borders */
+                --border: rgba(255,255,255,0.10);
+                --border-gold: rgba(212,175,106,0.35);
+
+                /* Glass */
+                --glass: rgba(255,255,255,0.04);
+                --glass-hover: rgba(255,255,255,0.07);
+            }
+        </style>
     </head>
     <body>
         <slot />

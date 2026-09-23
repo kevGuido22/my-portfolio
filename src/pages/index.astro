@@ -29,18 +29,18 @@ import { SideBar } from "../components/SideBar.jsx";
 <style is:global>
     html {
         scroll-behavior: smooth;
-        
-        /* purple */
-        background: #780387;
-        background: radial-gradient(
-            circle,
-            rgb(101, 2, 114) 4%,
-            rgb(80, 2, 90) 13%,
-            rgba(45, 1, 64, 1) 25%,
-            rgba(0, 1, 13, 1) 50%
-        );
-
-        /* Blue */
+        background:
+            radial-gradient(
+                circle at 70% 30%,
+                rgba(212,175,106,.12),
+                transparent 35%
+            ),
+            radial-gradient(
+                circle at 20% 80%,
+                rgba(108,142,255,.06),
+                transparent 30%
+            ),
+            #050505;
         background-repeat: no-repeat;
         background-size: cover;
         background-attachment: fixed;
@@ -62,207 +62,11 @@ import { SideBar } from "../components/SideBar.jsx";
         scroll-margin-top: 100px;
     }
 
-    .glow-hover {
-        /* color: white; */
-        transition:
-            color 0.3s,
-            text-shadow 0.3s;
-        transition:
-            color 0.3s,
-            drop-shadow 0.3s;
-    }
-
-    .glow-hover:hover {
-        /* color: rgba(148, 8, 235); */
-        text-shadow:
-            0 0 5px rgba(255, 255, 255, 0.9),
-            0 0 15px rgba(255, 255, 255, 0.8),
-            0 0 25px rgba(255, 255, 255, 0.7),
-            0 0 35px rgba(255, 255, 255, 0.6);
-
-        text-shadow:
-            0 0 5px rgba(255, 255, 255, 0.2),
-            0 0 10px rgba(255, 255, 255, 0.5),
-            0 0 5px rgba(255, 255, 255, 0.2),
-            0 0 10px rgba(255, 255, 255, 0.5);
-
-        & svg {
-            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.4))
-                drop-shadow(0 0 15px rgba(255, 255, 255, 0.4))
-                drop-shadow(0 0 25px rgba(255, 255, 255, 0.4));
-
-            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2))
-                drop-shadow(0 0 10px rgba(255, 255, 255, 0.3))
-                drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
-        }
-    }
-
-    .card-skill {
-        transition: all 0.1s;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .card-skill::before {
-        content: "";
-        position: absolute;
-        background-image: linear-gradient(
-            120deg,
-            rgba(255, 255, 255, 0) 30%,
-            rgba(255, 255, 255, 0.2),
-            rgba(255, 255, 255, 0) 70%
-        );
-        height: 300px;
-        width: 10px;
-        transform: skewX(30deg);
-        left: -100px;
-        animation: shine 2.5s linear infinite;
-    }
-
-    @keyframes shine {
-        0% {
-            left: -100px;
-        }
-        20% {
-            left: 100px;
-        }
-        100% {
-            left: 500px;
-        }
-    }
-
-    .card-skill:hover {
-        box-shadow:
-            0 1px 3px rgba(255, 255, 255, 0.1),
-            0 1px 7px rgba(255, 255, 255, 0.3),
-            0 1px 3px rgba(255, 255, 255, 0.1),
-            0 1px 7px rgba(255, 255, 255, 0.3);
-    }
-
-    .card-box-shadow {
-        box-shadow:
-            0 0 2px rgba(255, 255, 255, 0.1),
-            0 0 7px rgba(255, 255, 255, 0.3),
-            0 0 2px rgba(255, 255, 255, 0.1),
-            0 0 7px rgba(255, 255, 255, 0.3);
-    }
-
-    .bg-section {
-        background-image: linear-gradient(
-            120deg,
-            rgb(0, 3, 61, 0.8) 20%,
-            rgb(6, 0, 171, 0.5) 50%,
-            rgb(0, 51, 255, 0.6) 100%
-        );
-    }
-
-    .bg-card2 {
-        background-color: transparent;
-        backdrop-filter: blur(30px);
-    }
-
-    .span-1 {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 2px;
-        background: linear-gradient(
-            to right,
-            transparent,
-            rgba(255, 255, 255, 0.8)
-        );
-        animation: animate_one 4s linear infinite;
-    }
-
-    .span-2 {
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 2px;
-        height: 100%;
-        background: linear-gradient(
-            to bottom,
-            transparent,
-            rgba(255, 255, 255, 0.8)
-        );
-        animation: animate_two 4s linear infinite;
-        animation-delay: 2s;
-    }
-
-    .span-3 {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        width: 100%;
-        height: 2px;
-        background: linear-gradient(
-            to left,
-            transparent,
-            rgba(255, 255, 255, 0.8)
-        );
-        animation: animate_three 4s linear infinite;
-        animation-delay: 4s;
-    }
-
-    .span-4 {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 2px;
-        height: 100%;
-        background: linear-gradient(
-            to top,
-            transparent,
-            rgba(255, 255, 255, 0.8)
-        );
-        animation: animate_four 4s linear infinite;
-        animation-delay: 6s;
-    }
-
-    .bg-card {
-        background-color: rgba(192, 187, 187, 0.2);
-        backdrop-filter: blur(20px);
-    }
-
-    .bg-tag {
-        background-color: rgba(77, 77, 77, 0.2);
-        backdrop-filter: blur(20px);
-    }
-
-    @keyframes animate_one {
-        0% {
-            transform: translateX(-100%);
-        }
-        100% {
-            transform: translateX(100%);
-        }
-    }
-
-    @keyframes animate_two {
-        0% {
-            transform: translateY(-100%);
-        }
-        100% {
-            transform: translateY(100%);
-        }
-    }
-
-    @keyframes animate_three {
-        0% {
-            transform: translateX(100%);
-        }
-        100% {
-            transform: translateX(-100%);
-        }
-    }
-
-    @keyframes animate_four {
-        0% {
-            transform: translateY(100%);
-        }
-        100% {
-            transform: translateY(-100%);
+    @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
         }
     }
 </style>
