@@ -1,29 +1,43 @@
-<section
-    id="aboutme"
-    class="mt-36 max-w-screen-lg m-auto gap-2 grid p-4 md:p-4"
->
-    <h2 class="text-white text-5xl text-center font-primary font-semibold">
+<section id="aboutme" class="section">
+    <h2 class="text-white text-5xl font-primary font-semibold mb-12 text-center">
         About Me
     </h2>
-    <div class="grid gap-6 sm:gap-0 sm:grid-cols-2 mt-8 items-center">
-        <img
-            src="/images/img3.jpg"
-            alt="image-profile"
-            class="aspect-square w-72 object-cover rounded-lg border m-auto object-center"
-        />
-        <div class="flex flex-col gap-4">
-            <p class="text-white">
-                Hi! I'm Kevin Guido, a software developer from Costa Rica. I’m a
-                person who is committed to quality and continuous improvement. I
-                enjoy both frontend and backend development and I take on the
-                challenges they bring, always looking for useful solutions that
-                make a difference.
+    <div class="grid md:grid-cols-2 gap-8 max-w-screen-lg m-auto">
+        <div class="flex flex-col gap-6">
+            <img
+                src="/images/img3.jpg"
+                alt="Portrait of Kevin Guido"
+                class="w-full aspect-square object-cover object-center border border-white/10 hover:border-gold transition-colors duration-300 rounded-lg"
+            />
+            <p class="text-text-secondary text-lg font-primary leading-relaxed">
+                Hi! I'm Kevin Guido, a software developer from Costa Rica. I'm a person who is committed to quality and continuous improvement. I enjoy both frontend and backend development and I take on the challenges they bring, always looking for useful solutions that make a difference.
             </p>
-            <p class="text-white">
-                I consider myself self-taught and, as a professional, I always
-                give my best. I enjoy learning new things and constantly growing
-                in the world of software development.
+            <p class="text-text-secondary text-lg font-primary leading-relaxed">
+                I consider myself self-taught and, as a professional, I always give my best. I enjoy learning new things and constantly growing in the world of software development.
             </p>
+        </div>
+        <div class="flex flex-col gap-6">
+            <div class="bg-surface rounded-lg p-6 border border-white/10 hover:border-gold transition-colors duration-300">
+                <p class="text-gold text-sm font-primary mb-1 tracking-wider">ROLE</p>
+                <p class="text-white text-xl font-primary font-semibold">Software Engineer</p>
+            </div>
+            <div class="bg-surface rounded-lg p-6 border border-white/10 hover:border-gold transition-colors duration-300">
+                <p class="text-gold text-sm font-primary mb-1 tracking-wider">LOCATION</p>
+                <p class="text-white text-xl font-primary font-semibold">Costa Rica</p>
+            </div>
+            <div class="bg-surface rounded-lg p-6 border border-white/10 hover:border-gold transition-colors duration-300">
+                <p class="text-gold text-sm font-primary mb-1 tracking-wider">CURRENTLY</p>
+                <p class="text-text-secondary text-lg font-primary">Building / learning / exploring...</p>
+            </div>
+            <div class="bg-surface rounded-lg p-6 border border-white/10 hover:border-gold transition-colors duration-300">
+                <p class="text-gold text-sm font-primary mb-1 tracking-wider">STACK</p>
+                <div class="flex flex-wrap gap-2 mt-2">
+                    <span class="text-gold text-sm font-primary bg-gold/10 px-3 py-1 rounded-md">Java</span>
+                    <span class="text-gold text-sm font-primary bg-gold/10 px-3 py-1 rounded-md">Spring Boot</span>
+                    <span class="text-gold text-sm font-primary bg-gold/10 px-3 py-1 rounded-md">React</span>
+                    <span class="text-gold text-sm font-primary bg-gold/10 px-3 py-1 rounded-md">AWS</span>
+                </div>
+            </div>
         </div>
     </div>
 </section>

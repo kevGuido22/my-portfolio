@@ -1250,7 +1250,7 @@ Al completar cada fase de implementación, marcarla como ☑ en la siguiente tab
 | 2 | Navegación | ☑ |
 | 3 | Layout CSS Global | ☑ |
 | 4 | Hero | ☑ |
-| 5 | Bento / About | ☐ |
+| 5 | Bento / About | ☑ |
 | 6 | Experience | ☐ |
 | 7 | Skills | ☐ |
 | 8 | Projects | ☐ |
