@@ -14,25 +14,23 @@ interface Props {
 }
 
 const { title, img, description, tags, web, gitHub } = Astro.props;
-
-console.log(tags);
 ---
 
 <div
-    class="card-box-shadow grid sm:grid-cols-2 rounded-lg overflow-hidden w-full mt-4 h-min-[50rem] relative bg-white/5 backdrop-blur-md backdrop-filter hover:shadow-xl transition-all duration-300 ease-in-out"
+    class="grid sm:grid-cols-2 rounded-card overflow-hidden w-full mt-4 relative bg-surface border transition-colors duration-300 hover:border-strong"
 >
     <div class="sm:order-2">
         <img
             src={img}
             alt=""
-            class=" h-full object-cover object-left"
+            class="h-full object-cover object-left"
         />
     </div>
     <div class="p-6 order-1 gap-2 flex flex-col">
-        <h3 class="text-white font-primary text-xl font-bold">
+        <h3 class="text-primary font-primary text-xl font-bold">
             {title}
         </h3>
-        <p class="text-gray-300 font-primary">
+        <p class="text-secondary font-primary">
             {description}
         </p>
         <div class="flex flex-grow items-end">
@@ -59,9 +57,4 @@ console.log(tags);
             }
         </div>
     </div>
-    <!-- <span class="border-span-top"></span> -->
-    <span class="span-1"></span>
-    <span class="span-2"></span>
-    <span class="span-3"></span>
-    <span class="span-4"></span>
 </div>

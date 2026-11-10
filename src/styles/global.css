@@ -1,0 +1,73 @@
+/* ============================================================
+   Design tokens — single source of truth (SPEC.md §4)
+   Do not hardcode color values outside this file.
+   ============================================================ */
+:root {
+    /* Identity */
+    --color-background: #E3E3E4;
+    --color-surface: #FFFFFF;
+    --color-primary: #030303;
+    --color-secondary: #494949;
+    --color-dark-surface: #323232;
+
+    /* Semantic */
+    --color-text-primary: var(--color-primary);
+    --color-text-secondary: var(--color-secondary);
+    --color-text-on-dark: var(--color-surface);
+    --color-text-on-dark-secondary: #C8C8C8;
+    --color-border: rgba(3, 3, 3, 0.12);
+    --color-border-on-dark: rgba(255, 255, 255, 0.16);
+    --color-border-strong: rgba(3, 3, 3, 0.32);
+
+    /* Shape */
+    --radius-card: 4px;
+    --radius-chip: 999px;
+
+    /* Layout */
+    --container-max: 72rem;
+    --section-min-height: 100svh;
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+}
+
+/* Offset anchored sections below the fixed top navigation */
+section[id] {
+    scroll-margin-top: 100px;
+}
+
+::selection {
+    background: var(--color-primary);
+    color: var(--color-surface);
+}
+
+:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+/* ============================================================
+   Reduced motion (SPEC.md §10)
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

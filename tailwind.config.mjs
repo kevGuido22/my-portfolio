@@ -3,17 +3,30 @@ export default {
     content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
     theme: {
         extend: {
-            backgroundImage: {
-                "header-gradient":
-                    "linear-gradient(180deg, rgba(2,31,95,1) 0%, rgba(2,14,46,1) 45%, rgba(9,9,9,1) 100%)",
-            },
             fontFamily: {
-				primary: ['Red Hat Display', 'sans-serif']
-			},
-            colors:{
-                "dark-custom": "#090909",
-                "tag": "#141414"
-            }
+                primary: ["Red Hat Display", "sans-serif"],
+            },
+            colors: {
+                background: "var(--color-background)",
+                surface: "var(--color-surface)",
+                primary: "var(--color-primary)",
+                secondary: "var(--color-secondary)",
+                "dark-surface": "var(--color-dark-surface)",
+                "on-dark": "var(--color-text-on-dark)",
+                "on-dark-secondary": "var(--color-text-on-dark-secondary)",
+            },
+            borderColor: {
+                DEFAULT: "var(--color-border)",
+                strong: "var(--color-border-strong)",
+                "on-dark": "var(--color-border-on-dark)",
+            },
+            borderRadius: {
+                card: "var(--radius-card)",
+                chip: "var(--radius-chip)",
+            },
+            maxWidth: {
+                container: "var(--container-max)",
+            },
         },
     },
     plugins: [],

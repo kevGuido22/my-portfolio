@@ -15,13 +15,13 @@ export function SideBar() {
 
     return (
         <div
-            className={`w-[100%] h-screen bg-dark-custom/80 ${isOpen ? "left-0" : "left-[-500rem]"} fixed top-0 z-40 p-10 py-12 bg-opacity-100 bg-clip-padding backdrop-filter backdrop-blur-md transition-all duration-150 ease-in-out justify-between flex flex-col`}
+            className={`w-[100%] h-screen bg-primary ${isOpen ? "left-0" : "left-[-500rem]"} fixed top-0 z-40 p-10 py-12 transition-all duration-150 ease-in-out justify-between flex flex-col`}
         >
-            <ul className="grid gap-10 text-white font-primary text-xl ">
+            <ul className="grid gap-10 text-on-dark font-primary text-xl">
                 <li>
                     <a
                         href="#"
-                        className="glow-hover flex gap-2 items-center"
+                        className="flex gap-2 items-center"
                         onClick={closeMenu}
                     >
                         <HomeIcon />
@@ -31,7 +31,7 @@ export function SideBar() {
                 <li>
                     <a
                         href="#experience"
-                        className="glow-hover flex gap-2 items-center"
+                        className="flex gap-2 items-center"
                         onClick={closeMenu}
                     >
                         <BriefCaseIcon />
@@ -41,7 +41,7 @@ export function SideBar() {
                 <li>
                     <a
                         href="#projects"
-                        className="glow-hover flex gap-2 items-center"
+                        className="flex gap-2 items-center"
                         onClick={closeMenu}
                     >
                         <ClipBoardIcon />
@@ -51,7 +51,7 @@ export function SideBar() {
                 <li>
                     <a
                         href="#skills"
-                        className="glow-hover flex gap-2 items-center"
+                        className="flex gap-2 items-center"
                         onClick={closeMenu}
                     >
                         <LightningIcon />
@@ -61,7 +61,7 @@ export function SideBar() {
                 <li>
                     <a
                         href="#aboutme"
-                        className="glow-hover flex gap-2 items-center"
+                        className="flex gap-2 items-center"
                         onClick={closeMenu}
                     >
                         <StarIcon />
@@ -69,10 +69,10 @@ export function SideBar() {
                     </a>
                 </li>
             </ul>
-            <div className="border-t-[1px] grid gap-10 pt-8">
+            <div className="border-t border-t-on-dark grid gap-10 pt-8">
                 <a
-                    href="/public/Resume.pdf"
-                    className="glow-hover flex gap-2 items-center text-white text-xl"
+                    href="/CV.pdf"
+                    className="flex gap-2 items-center text-on-dark text-xl"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
@@ -81,16 +81,16 @@ export function SideBar() {
 
                 <a
                     href="https://www.linkedin.com/in/kevin-guido-urbina-2456aa280/"
-                    className="glow-hover flex gap-2 items-center text-white text-xl"
+                    className="flex gap-2 items-center text-on-dark text-xl"
                     target="_blank"
                 >
                     <LinkedInIcon />
-                    LinkdIn{" "}
+                    LinkedIn{" "}
                 </a>
 
                 <a
                     href="https://github.com/kevGuido22"
-                    className="glow-hover flex gap-2 items-center text-white text-xl"
+                    className="flex gap-2 items-center text-on-dark text-xl"
                     target="_blank"
                 >
                     <GithubIcon /> Github

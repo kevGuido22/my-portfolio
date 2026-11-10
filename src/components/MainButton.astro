@@ -7,9 +7,10 @@ interface Props {
 const { text, web } = Astro.props;
 ---
 
+
 <a
     href={web}
-    class="backdrop-filter h-fit backdrop-blur-md py-3 px-4 text-white cursor-pointer bg-violet-900/20 rounded-md flex gap-2 justify-center transition-all duration-300 hover:bg-violet-800/70"
+    class="h-fit py-3 px-4 text-primary cursor-pointer bg-transparent border rounded-card flex gap-2 justify-center transition-colors duration-200 hover:bg-primary hover:text-background"
 >
     {text}
     <slot />
