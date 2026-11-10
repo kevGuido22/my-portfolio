@@ -314,12 +314,21 @@ Skills → About Me** + Footer. Idioma: **inglés**. Sin contenido nuevo.
 color. Duraciones 0.15–0.4s. Easing estándar (`ease`, `cubic-bezier` suave).
 
 **Casos:**
-- Reveal on scroll sutil (fade + translateY ≤16px, una sola vez,
-  IntersectionObserver) en contenido de sección.
+- **Reveal de contenido de sección** (ampliado a pedido del usuario, 2026-11-10):
+  mismo lenguaje de movimiento que el menú móvil — fade + translateY 12px,
+  420ms, `cubic-bezier(0.32, 0.72, 0, 1)`, escalonado ~60ms por bloque dentro
+  de cada sección. Disparado por IntersectionObserver sobre cada `section[id]`
+  (banda central del viewport): el contenido entra cuando la sección la ocupa
+  y sale cuando la deja — fluidez al navegar entre diapositivas, no una sola
+  vez. Marcado explícito con `data-reveal`; **mejora progresiva**: el estado
+  oculto solo existe con JS disponible (`html.js-reveal` se añade en `<head>`),
+  sin JS el contenido siempre es visible. Funciona con secciones más altas que
+  el viewport.
 - Transición de estado activo del indicador lateral (transform).
 - Hover states: subrayado de links, inversión de botones, background de filas.
 - `@media (prefers-reduced-motion: reduce)`: sin animaciones, sin smooth scroll,
-  sin snap. Contenido visible por defecto.
+  sin snap. Contenido visible por defecto (duraciones y delays de transición
+  se anulan).
 
 **Eliminadas (identidad anterior):** `glow-hover` (text/drop-shadow), `shine`
 infinito en skill cards, bordes luminosos animados `span-1..4`, blur dominante.

@@ -27,6 +27,15 @@ const { title } = Astro.props;
             rel="stylesheet"
         />
 
+        <!--
+            Gate for the section reveal system: section content is only hidden
+            before reveal when JS is available (progressive enhancement).
+            The reveal logic itself lives in the page (IntersectionObserver).
+        -->
+        <script is:inline>
+            document.documentElement.classList.add("js-reveal");
+        </script>
+
         <!-- Google tag (gtag.js) -->
         <script
             async

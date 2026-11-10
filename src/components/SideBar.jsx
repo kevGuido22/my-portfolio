@@ -64,8 +64,8 @@ export function SideBar() {
                 </ul>
             </nav>
 
-            {/* Contact row — mono labels, hairline top */}
-            <div className="flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-on-dark px-7 py-6 pb-[max(1.5rem,env(safe-area-inset-bottom))]">
+            {/* Contact row — mono labels, hairline top, centered */}
+            <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 border-t border-on-dark px-7 py-6 pb-[max(1.5rem,env(safe-area-inset-bottom))]">
                 <a
                     href="/CV.pdf"
                     target="_blank"

@@ -151,6 +151,27 @@ body {
     }
 }
 
+/* ============================================================
+   Section content reveal (scroll-driven)
+   Sections animate their content in when they occupy the viewport
+   and out when they leave — same easing language as the mobile
+   menu. The hidden state only exists while JS is available
+   (html.js-reveal is set synchronously in <head>), so content is
+   always visible without scripting. Stagger per group via
+   --reveal-delay, assigned in the page script.
+   ============================================================ */
+[data-reveal] {
+    transition:
+        opacity 420ms cubic-bezier(0.32, 0.72, 0, 1),
+        transform 420ms cubic-bezier(0.32, 0.72, 0, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+}
+
+html.js-reveal [data-reveal]:not(.is-revealed) {
+    opacity: 0;
+    transform: translateY(0.75rem);
+}
+
 ::selection {
     background: var(--color-primary);
     color: var(--color-surface);
@@ -175,5 +196,6 @@ body {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
+        transition-delay: 0s !important;
     }
 }

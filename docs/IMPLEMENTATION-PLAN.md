@@ -241,6 +241,22 @@ Validation:
     menú móvil correcto, cabeceras 01–05 presentes.
 ```
 
+### Extensiones post-feedback de la Fase 2 (2026-11-10, aprobadas por el usuario)
+
+Cambios aplicados tras la inspección visual del usuario; documentados en
+SPEC §7 y §10:
+
+```text
+1. Snap mandatory + scroll-snap-stop: always (aislamiento total de slide).
+2. Fix de apilamiento del menú móvil (z-40) + rediseño editorial oscuro
+   (wipe clip-path, índices mono, hairlines, trap de foco, scroll lock).
+3. Reveal de contenido de sección: atributo data-reveal en los bloques de
+   las 5 secciones + IntersectionObserver por sección (index.astro) +
+   gate html.js-reveal (Layout.astro) + CSS en global.css.
+   Las fases 3–7 deben conservar/refinar el marcado data-reveal al
+   rediseñar cada sección.
+```
+
 ---
 
 ## Fase 3 — Home / Hero

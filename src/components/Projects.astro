@@ -11,7 +11,7 @@ import SectionHeading from "./SectionHeading.astro";
     <div class="max-w-screen-lg m-auto w-full gap-2 grid">
         <div>
             <SectionHeading index="03" title="Projects" />
-            <p class="text-secondary font-primary mt-4">
+            <p class="text-secondary font-primary mt-4" data-reveal>
                 Some of the projects I have worked. I used different
                 technologies and skills in frontend and backend development, as
                 well as in UX/UI design and devOps. This allowed me to solve
@@ -19,38 +19,43 @@ import SectionHeading from "./SectionHeading.astro";
                 software development.
             </p>
         </div>
-        <HorizontalCard
-            title={"SpringBoot micro-services"}
-            img={"/images/micro-services.webp"}
-            description={"This is a practice project built to learn and explore microservices architecture using Spring Boot. Each microservice is containerized with Docker, and database migrations are managed with Flyway to ensure version control. An API Gateway was implemented to handle all requests through a single entry point, improving scalability and routing. To ensure resilience, Resilience4j was added to manage failures when services do not respond. Keycloak was integrated for authentication and authorization, providing centralized and secure identity management across all services."}
-            tags={[
-                "SpringBoot",
-                "API Gateway",
-                "Flyway",
-                "Docker",
-                "Resilience4j",
-                "Keycloak",
-                "SpringCloud",
-            ]}
-            gitHub={"https://github.com/kevGuido22/microservices-project"}
-        />
-        <HorizontalCard
-            title={"Spotify Clone"}
-            img={"/images/spotify.webp"}
-            description={"This is a Spotify clone built using the Astro framework and TypeScript. React components were also added to apply the concept of Islands of Interactivity offered by Astro. Astro Transitions were used to improve the navigation experience between pages. For managing the global state, the Zustand library was chosen, making it easy and efficient to handle the application’s state."}
-            tags={[
-                "HTML",
-                "TypeScript",
-                "React",
-                "Astro",
-                "Tailwind",
-                "Zustand",
-            ]}
-            web={"https://spotify-clone-rho-bay.vercel.app/"}
-            gitHub={"https://github.com/kevGuido22/spotify-clone"}
-        />
+        <div data-reveal>
+            <HorizontalCard
+                title={"SpringBoot micro-services"}
+                img={"/images/micro-services.webp"}
+                description={"This is a practice project built to learn and explore microservices architecture using Spring Boot. Each microservice is containerized with Docker, and database migrations are managed with Flyway to ensure version control. An API Gateway was implemented to handle all requests through a single entry point, improving scalability and routing. To ensure resilience, Resilience4j was added to manage failures when services do not respond. Keycloak was integrated for authentication and authorization, providing centralized and secure identity management across all services."}
+                tags={[
+                    "SpringBoot",
+                    "API Gateway",
+                    "Flyway",
+                    "Docker",
+                    "Resilience4j",
+                    "Keycloak",
+                    "SpringCloud",
+                ]}
+                gitHub={"https://github.com/kevGuido22/microservices-project"}
+            />
+        </div>
+        <div data-reveal>
+            <HorizontalCard
+                title={"Spotify Clone"}
+                img={"/images/spotify.webp"}
+                description={"This is a Spotify clone built using the Astro framework and TypeScript. React components were also added to apply the concept of Islands of Interactivity offered by Astro. Astro Transitions were used to improve the navigation experience between pages. For managing the global state, the Zustand library was chosen, making it easy and efficient to handle the application’s state."}
+                tags={[
+                    "HTML",
+                    "TypeScript",
+                    "React",
+                    "Astro",
+                    "Tailwind",
+                    "Zustand",
+                ]}
+                web={"https://spotify-clone-rho-bay.vercel.app/"}
+                gitHub={"https://github.com/kevGuido22/spotify-clone"}
+            />
+        </div>
         <div
             class="grid grid-cols-[repeat(auto-fill,_minmax(350px,_1fr))] gap-4 mt-4"
+            data-reveal
         >
             <Card
                 title={"Suru - Frontend"}

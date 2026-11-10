@@ -26,3 +26,53 @@ import SectionIndicator from "../components/SectionIndicator.astro";
     </main>
     <Footer />
 </Layout>
+
+<script>
+    // Section content reveal: each section owns the [data-reveal] elements
+    // inside it. When a section occupies the viewport band its content
+    // animates in (staggered); when it leaves, it animates out. Native IO,
+    // no dependencies; content is visible without JS (see global.css).
+    const revealElements = Array.from(
+        document.querySelectorAll<HTMLElement>("[data-reveal]"),
+    );
+
+    const groups = new Map<HTMLElement, HTMLElement[]>();
+    for (const el of revealElements) {
+        const section = el.closest<HTMLElement>("section[id]");
+        if (!section) continue;
+        const group = groups.get(section) ?? [];
+        group.push(el);
+        groups.set(section, group);
+    }
+
+    for (const elements of groups.values()) {
+        elements.forEach((el, index) => {
+            // Stagger within the group, capped so large lists stay snappy.
+            el.style.setProperty(
+                "--reveal-delay",
+                `${Math.min(index, 6) * 60}ms`,
+            );
+        });
+    }
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            for (const entry of entries) {
+                const elements = groups.get(entry.target as HTMLElement);
+                if (!elements) continue;
+
+                for (const el of elements) {
+                    el.classList.toggle(
+                        "is-revealed",
+                        entry.isIntersecting,
+                    );
+                }
+            }
+        },
+        // Active while the section overlaps the middle band of the viewport:
+        // works for slide-height sections and for sections taller than it.
+        { rootMargin: "-15% 0px -15% 0px", threshold: 0 },
+    );
+
+    groups.forEach((_elements, section) => observer.observe(section));
+</script>
