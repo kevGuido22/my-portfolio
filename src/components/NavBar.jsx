@@ -20,7 +20,7 @@ export function NavBar() {
                     <li key={link.href}>
                         <a
                             href={link.href}
-                            className="relative py-2 text-sm md:text-base font-primary text-primary after:absolute after:left-0 after:bottom-0 after:h-px after:w-0 after:bg-primary after:transition-all after:duration-200 hover:after:w-full"
+                            className="relative py-2 text-sm md:text-base font-primary text-secondary transition-colors duration-200 hover:text-primary after:absolute after:left-0 after:bottom-0 after:h-px after:w-0 after:bg-primary after:transition-all after:duration-200 hover:after:w-full"
                         >
                             {link.label}
                         </a>

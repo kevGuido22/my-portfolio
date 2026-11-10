@@ -175,14 +175,25 @@ con el indicador de diapositivas + título grande. Refuerza la lectura de
 ### Scroll Snap (mecanismo principal)
 
 - Implementación con CSS Scroll Snap nativo sobre el documento:
-  `html { scroll-snap-type: y proximity; }` con `section { scroll-snap-align: start; }`.
-- **`proximity` (no `mandatory`)**: el navegador ajusta solo al detenerse cerca de
-  un límite de sección. Resuelve el caso de **secciones más altas que el
-  viewport** (Projects, Experience): dentro de una sección larga el scroll es
-  natural y no queda atrapado.
+  `html { scroll-snap-type: y mandatory; }` con `section { scroll-snap-align: start; }`.
+- **`mandatory`** (cambio aprobado por el usuario, 2026-11-10, tras feedback de la
+  Fase 2): garantiza aislamiento total por diapositiva — cada gesto de scroll
+  termina en un límite de sección. Es comportamiento nativo del navegador, no
+  intercepción de eventos de rueda (AGENTS.md §11 se respeta).
+- `scroll-snap-stop: always` en las secciones (≥1024px): un gesto de scroll
+  avanza exactamente una diapositiva; un flick fuerte no puede saltarse
+  secciones completas.
+- **Secciones más altas que el viewport** (Projects, Experience): el navegador
+  permite scroll libre dentro de un área de snap sobredimensionada y ajusta
+  al salir de ella; no queda atrapado.
+- `scroll-margin-top` igual a la altura del navbar: los puntos de snap y los
+  saltos de ancla coinciden (la sección aterriza justo bajo el navbar); el
+  desbordamiento del slide anterior queda oculto exactamente detrás del navbar
+  opaco. La primera diapositiva usa altura completa del viewport (su snap se
+  recorta al inicio del documento).
 - Activo solo en **desktop ≥1024px** (media query). En móvil/tablet: scroll
   natural (prioridad: legibilidad y desplazamiento natural — AGENTS.md §11).
-- Secciones: `min-height: var(--section-min-height)` en desktop para la lectura
+- Secciones: `min-height: 100svh − navbar` en desktop para la lectura
   de diapositiva; en móvil altura natural según contenido.
 - `prefers-reduced-motion`: se desactivan `scroll-behavior: smooth` y el snap.
 
@@ -205,14 +216,24 @@ con el indicador de diapositivas + título grande. Refuerza la lectura de
 - El anchor navigation nativo (`#id`) se conserva para teclado y lectores de
   pantalla.
 
-### Menú móvil (conservado + restilado)
+### Menú móvil (conservado + rediseñado)
 
 - Se conserva el patrón overlay con React + Zustand (decisión del usuario).
 - Correcciones de accesibilidad obligatorias: `BtnMenu` pasa de `div` a
-  `<button aria-expanded>`, `Escape` cierra, focus states visibles, foco no
-  queda oculto tras el overlay.
-- Estilo: overlay con `--color-primary` (o dark surface) + tipografía editorial;
-  elimina blur y glow.
+  `<button aria-expanded>` (44px de área táctil), `Escape` cierra y devuelve el
+  foco al botón, **trap de foco** (Tab/Shift+Tab) mientras está abierto, lock de
+  scroll del documento, focus states visibles.
+- Concepto visual (rediseño aprobado por el usuario, 2026-11-10, tras bug de
+  pintado en Fase 2): **diapositiva editorial oscura** a pantalla completa.
+  - Fondo `--color-primary`, texto on-dark; sin blur ni glow.
+  - Apertura con wipe `clip-path` desde el borde derecho (donde está el toggle).
+  - Barra de marca mono uppercase alineada con el botón de cierre + hairline.
+  - Links grandes con índices mono `01`–`05` y separadores hairline; entrada
+    escalonada (opacity + translateY, ~60ms de offset, reduced-motion safe).
+  - Fila inferior de contacto en mono uppercase con hairline superior y
+    `safe-area-inset-bottom` para dispositivos con notch.
+  - Capa `z-40`: por encima de todo el contenido (las secciones posicionadas
+    pintaban encima del overlay con z-index auto); el toggle queda a `z-50`.
 - Fix de contenido: el link del CV pasa de `/public/Resume.pdf` (roto) a `/CV.pdf`.
 
 ---

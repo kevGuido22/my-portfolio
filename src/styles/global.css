@@ -41,25 +41,113 @@ body {
     color: var(--color-text-primary);
 }
 
-/* Offset anchored sections below the fixed top navigation */
-section[id] {
-    scroll-margin-top: calc(var(--navbar-height) + 1rem);
-}
-
-/* Presentation slides: full-height sections on large screens */
-@media (min-width: 1024px) {
+/* Offset anchored sections below the fixed top navigation (navbar visible >=640px) */
+@media (min-width: 640px) {
     section[id] {
-        scroll-snap-align: start;
-        min-height: calc(
-            var(--section-min-height) - var(--navbar-height) - 1rem
-        );
+        scroll-margin-top: var(--navbar-height);
     }
 }
 
-/* Scroll snap only on large screens, and never with reduced motion */
+/* Presentation slides on large screens:
+   each snapped section fills the viewport exactly below the fixed navbar.
+   scroll-margin outsets the snap area, so snap points land with the section
+   top right below the navbar, and the 64px "leak" of the previous section
+   stays hidden behind the opaque navbar. */
+@media (min-width: 1024px) {
+    section[id] {
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+        min-height: calc(var(--section-min-height) - var(--navbar-height));
+    }
+
+    /* First slide: its snap point clamps to the document start, so it needs
+       full viewport height to keep the next section out of view. */
+    section#home {
+        min-height: var(--section-min-height);
+    }
+
+    /* The trailing footer is not a slide: aligning its end to the document
+       end keeps it reachable — mandatory snapping would otherwise block the
+       last stretch of scroll with the footer never fully visible. */
+    footer {
+        scroll-snap-align: end;
+        scroll-snap-stop: always;
+    }
+}
+
+/* Snap only on large screens, and never with reduced motion */
 @media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
     html {
-        scroll-snap-type: y proximity;
+        scroll-snap-type: y mandatory;
+    }
+}
+
+/* ============================================================
+   Mobile menu overlay (SideBar.jsx / BtnMenu.jsx)
+   Dark editorial slide over the whole viewport. Opens with a
+   clip-path wipe from the right edge (where the toggle sits),
+   links enter staggered. z-40 keeps it above page content
+   (sections are positioned and would otherwise paint over it);
+   the toggle stays at z-50. Reduced motion: instant open/close.
+   ============================================================ */
+.mobile-menu {
+    clip-path: inset(0 0 0 100%);
+    visibility: hidden;
+}
+
+.mobile-menu[data-open="true"] {
+    clip-path: inset(0);
+    visibility: visible;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .mobile-menu {
+        transition:
+            clip-path 320ms cubic-bezier(0.32, 0.72, 0, 1),
+            visibility 0s linear 320ms;
+    }
+
+    .mobile-menu[data-open="true"] {
+        transition:
+            clip-path 320ms cubic-bezier(0.32, 0.72, 0, 1),
+            visibility 0s;
+    }
+
+    .mobile-menu[data-open="true"] .mobile-menu-item {
+        animation: mobile-menu-item-in 420ms cubic-bezier(0.32, 0.72, 0, 1)
+            both;
+    }
+
+    .mobile-menu[data-open="true"] .mobile-menu-item:nth-child(1) {
+        animation-delay: 60ms;
+    }
+
+    .mobile-menu[data-open="true"] .mobile-menu-item:nth-child(2) {
+        animation-delay: 110ms;
+    }
+
+    .mobile-menu[data-open="true"] .mobile-menu-item:nth-child(3) {
+        animation-delay: 160ms;
+    }
+
+    .mobile-menu[data-open="true"] .mobile-menu-item:nth-child(4) {
+        animation-delay: 210ms;
+    }
+
+    .mobile-menu[data-open="true"] .mobile-menu-item:nth-child(5) {
+        animation-delay: 260ms;
+    }
+}
+
+@keyframes mobile-menu-item-in {
+    from {
+        opacity: 0;
+        transform: translateY(0.75rem);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
     }
 }
 

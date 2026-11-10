@@ -191,12 +191,14 @@ Files:
     Los mismos componentes + src/styles/global.css (reglas de snap).
 
 Changes:
-    - global.css: scroll-snap-type: y proximity SOLO ≥1024px
-      (media query); scroll-behavior: smooth con excepción
+    - global.css: scroll-snap-type: y mandatory SOLO ≥1024px
+      (media query, aprobado por el usuario tras feedback de la fase);
+      scroll-snap-stop: always (un gesto de scroll = una diapositiva);
+      scroll-behavior: smooth con excepción
       prefers-reduced-motion.
-    - Secciones: min-height 100svh en ≥1024px, scroll-snap-align: start,
-      scroll-margin-top ajustado a la altura real de la navbar; en móvil
-      altura natural.
+    - Secciones: min-height 100svh−navbar en ≥1024px, scroll-snap-align: start,
+      scroll-margin-top igual al navbar (puntos de snap = aterrizaje de anclas);
+      en móvil altura natural.
     - SectionIndicator.astro: fijo al borde derecho (solo ≥1024px), botones
       con aria-label="Ir a X", estado activo con aria-current="true", tick
       activo con transición transform; IntersectionObserver en <script>
