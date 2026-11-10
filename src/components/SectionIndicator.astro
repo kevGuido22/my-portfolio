@@ -1,0 +1,122 @@
+---
+const sections = [
+    { id: "home", label: "Home" },
+    { id: "experience", label: "Experience" },
+    { id: "projects", label: "Projects" },
+    { id: "skills", label: "Skills" },
+    { id: "aboutme", label: "About Me" },
+];
+---
+
+<div
+    class="fixed right-6 top-1/2 -translate-y-1/2 z-20 hidden lg:flex flex-col items-end gap-5"
+    data-section-indicator
+>
+    <span
+        class="font-mono text-xs tracking-[0.15em] text-secondary"
+        data-indicator-counter
+        aria-hidden="true">01 / 05</span
+    >
+    <nav aria-label="Sections" class="flex flex-col items-end gap-4">
+        {
+            sections.map((section) => (
+                <a
+                    href={`#${section.id}`}
+                    data-section-link={section.id}
+                    aria-label={`Go to ${section.label}`}
+                    aria-current={section.id === "home" ? "true" : undefined}
+                >
+                    <span class="indicator-tick" />
+                </a>
+            ))
+        }
+    </nav>
+</div>
+
+<style>
+    .indicator-tick {
+        display: block;
+        height: 2px;
+        width: 2.5rem;
+        background-color: var(--color-secondary);
+        opacity: 0.45;
+        transform: scaleX(0.5);
+        transform-origin: right center;
+        transition:
+            transform 200ms ease,
+            background-color 200ms ease,
+            opacity 200ms ease;
+    }
+
+    a:hover .indicator-tick {
+        opacity: 0.75;
+    }
+
+    a[aria-current="true"] .indicator-tick {
+        background-color: var(--color-primary);
+        opacity: 1;
+        transform: scaleX(1);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .indicator-tick {
+            transition: none;
+        }
+    }
+</style>
+
+<script>
+    const root = document.querySelector<HTMLElement>("[data-section-indicator]");
+
+    if (root) {
+        const links = Array.from(
+            root.querySelectorAll<HTMLAnchorElement>("a[data-section-link]"),
+        );
+        const counter = root.querySelector<HTMLElement>(
+            "[data-indicator-counter]",
+        );
+
+        const sections = links
+            .map((link) =>
+                document.getElementById(link.dataset.sectionLink ?? ""),
+            )
+            .filter((section): section is HTMLElement => section !== null);
+
+        const pad = (value: number) => String(value).padStart(2, "0");
+        const total = pad(links.length);
+
+        const setActive = (id: string) => {
+            links.forEach((link, index) => {
+                if (link.dataset.sectionLink === id) {
+                    link.setAttribute("aria-current", "true");
+                    if (counter) {
+                        counter.textContent = `${pad(index + 1)} / ${total}`;
+                    }
+                } else {
+                    link.removeAttribute("aria-current");
+                }
+            });
+        };
+
+        const sectionAtCenter = (): HTMLElement | undefined => {
+            const center = window.innerHeight / 2;
+            return sections.find((section) => {
+                const rect = section.getBoundingClientRect();
+                return rect.top <= center && rect.bottom >= center;
+            });
+        };
+
+        const update = () => {
+            const active = sectionAtCenter();
+            if (active) setActive(active.id);
+        };
+
+        update();
+
+        const observer = new IntersectionObserver(update, {
+            rootMargin: "-49% 0px -49% 0px",
+            threshold: 0,
+        });
+        sections.forEach((section) => observer.observe(section));
+    }
+</script>

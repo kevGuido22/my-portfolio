@@ -1,16 +1,16 @@
 ---
 import Card from "./Card.astro";
 import HorizontalCard from "./HorizontalCard.astro";
+import SectionHeading from "./SectionHeading.astro";
 ---
 
-<section class="p-4 mt-36" id="projects">
-    <div class="max-w-screen-lg m-auto gap-2 grid">
+<section
+    id="projects"
+    class="px-4 py-16 lg:py-0 lg:flex lg:flex-col lg:justify-center"
+>
+    <div class="max-w-screen-lg m-auto w-full gap-2 grid">
         <div>
-            <h2
-                class="text-primary text-5xl text-center font-primary font-semibold"
-            >
-                Projects
-            </h2>
+            <SectionHeading index="03" title="Projects" />
             <p class="text-secondary font-primary mt-4">
                 Some of the projects I have worked. I used different
                 technologies and skills in frontend and backend development, as

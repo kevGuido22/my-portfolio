@@ -9,6 +9,7 @@ import Experience from "../components/Experience.astro";
 import { NavBar as Nav } from "../components/NavBar.jsx";
 import { BtnMenu } from "../components/BtnMenu.jsx";
 import { SideBar } from "../components/SideBar.jsx";
+import SectionIndicator from "../components/SectionIndicator.astro";
 ---
 
 <Layout title="Kevin Guido — Software Developer">
@@ -16,6 +17,7 @@ import { SideBar } from "../components/SideBar.jsx";
         <Nav />
         <BtnMenu client:load />
         <SideBar client:load />
+        <SectionIndicator />
         <Header />
         <Experience />
         <Projects />

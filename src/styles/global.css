@@ -26,6 +26,7 @@
     /* Layout */
     --container-max: 72rem;
     --section-min-height: 100svh;
+    --navbar-height: 4rem;
 }
 
 /* ============================================================
@@ -42,7 +43,24 @@ body {
 
 /* Offset anchored sections below the fixed top navigation */
 section[id] {
-    scroll-margin-top: 100px;
+    scroll-margin-top: calc(var(--navbar-height) + 1rem);
+}
+
+/* Presentation slides: full-height sections on large screens */
+@media (min-width: 1024px) {
+    section[id] {
+        scroll-snap-align: start;
+        min-height: calc(
+            var(--section-min-height) - var(--navbar-height) - 1rem
+        );
+    }
+}
+
+/* Scroll snap only on large screens, and never with reduced motion */
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-snap-type: y proximity;
+    }
 }
 
 ::selection {
@@ -51,7 +69,7 @@ section[id] {
 }
 
 :focus-visible {
-    outline: 2px solid var(--color-primary);
+    outline: 2px solid currentColor;
     outline-offset: 2px;
 }
 

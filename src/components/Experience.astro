@@ -1,18 +1,15 @@
 ---
-
+import SectionHeading from "./SectionHeading.astro";
 ---
 
-<section class="p-6 mt-36 md:mt-0" id="experience">
-    <div class="max-w-screen-lg m-auto gap-2 grid">
+<section
+    id="experience"
+    class="px-4 py-16 lg:py-0 lg:flex lg:flex-col lg:justify-center"
+>
+    <div class="max-w-screen-lg m-auto w-full gap-2 grid">
         <div>
-            <h2
-                class="text-primary text-5xl text-center font-primary font-semibold"
-            >
-                Experience
-            </h2>
-            <ol
-                class="relative border-s mt-6"
-            >
+            <SectionHeading index="02" title="Experience" />
+            <ol class="relative border-s">
                 <li class="mb-10 ms-6">
                     <span
                         class="absolute flex items-center justify-center w-6 h-6 bg-primary rounded-full -start-3 ring-8 ring-background"

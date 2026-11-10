@@ -1,75 +1,42 @@
 import { useMenuStore } from "../store/useMenuStore";
-import {
-    HomeIcon,
-    ClipBoardIcon,
-    LightningIcon,
-    StarIcon,
-    BriefCaseIcon,
-    LinkedInIcon,
-    ResumeIcon,
-    GithubIcon,
-} from "../icons/icons";
+import { LinkedInIcon, ResumeIcon, GithubIcon } from "../icons/icons";
+
+const links = [
+    { href: "#home", label: "Home", index: "01" },
+    { href: "#experience", label: "Experience", index: "02" },
+    { href: "#projects", label: "Projects", index: "03" },
+    { href: "#skills", label: "Skills", index: "04" },
+    { href: "#aboutme", label: "About me", index: "05" },
+];
 
 export function SideBar() {
-    const { isOpen, closeMenu } = useMenuStore((state) => state);
+    const isOpen = useMenuStore((state) => state.isOpen);
+    const closeMenu = useMenuStore((state) => state.closeMenu);
 
     return (
         <div
-            className={`w-[100%] h-screen bg-primary ${isOpen ? "left-0" : "left-[-500rem]"} fixed top-0 z-40 p-10 py-12 transition-all duration-150 ease-in-out justify-between flex flex-col`}
+            id="mobile-menu"
+            className={`fixed top-0 h-screen w-full bg-primary p-10 py-12 flex flex-col justify-between transition-all duration-150 ease-in-out ${
+                isOpen ? "visible left-0" : "invisible left-[-500rem]"
+            }`}
         >
-            <ul className="grid gap-10 text-on-dark font-primary text-xl">
-                <li>
-                    <a
-                        href="#"
-                        className="flex gap-2 items-center"
-                        onClick={closeMenu}
-                    >
-                        <HomeIcon />
-                        Home
-                    </a>
-                </li>
-                <li>
-                    <a
-                        href="#experience"
-                        className="flex gap-2 items-center"
-                        onClick={closeMenu}
-                    >
-                        <BriefCaseIcon />
-                        Experience
-                    </a>
-                </li>
-                <li>
-                    <a
-                        href="#projects"
-                        className="flex gap-2 items-center"
-                        onClick={closeMenu}
-                    >
-                        <ClipBoardIcon />
-                        Projects
-                    </a>
-                </li>
-                <li>
-                    <a
-                        href="#skills"
-                        className="flex gap-2 items-center"
-                        onClick={closeMenu}
-                    >
-                        <LightningIcon />
-                        Skills
-                    </a>
-                </li>
-                <li>
-                    <a
-                        href="#aboutme"
-                        className="flex gap-2 items-center"
-                        onClick={closeMenu}
-                    >
-                        <StarIcon />
-                        About me
-                    </a>
-                </li>
+            <ul className="grid gap-8 text-on-dark font-primary text-2xl">
+                {links.map((link) => (
+                    <li key={link.href}>
+                        <a
+                            href={link.href}
+                            className="flex gap-4 items-baseline"
+                            onClick={closeMenu}
+                        >
+                            <span className="font-mono text-sm text-on-dark-secondary">
+                                {link.index}
+                            </span>
+                            {link.label}
+                        </a>
+                    </li>
+                ))}
             </ul>
-            <div className="border-t border-t-on-dark grid gap-10 pt-8">
+            <div className="border-t border-t-on-dark grid gap-8 pt-8">
                 <a
                     href="/CV.pdf"
                     className="flex gap-2 items-center text-on-dark text-xl"
@@ -85,7 +52,7 @@ export function SideBar() {
                     target="_blank"
                 >
                     <LinkedInIcon />
-                    LinkedIn{" "}
+                    LinkedIn
                 </a>
 
                 <a
@@ -93,7 +60,7 @@ export function SideBar() {
                     className="flex gap-2 items-center text-on-dark text-xl"
                     target="_blank"
                 >
-                    <GithubIcon /> Github
+                    <GithubIcon /> GitHub
                 </a>
             </div>
         </div>

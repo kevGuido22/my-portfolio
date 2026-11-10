@@ -1,16 +1,15 @@
 ---
 import SkillCard from "./SkillCard.astro";
+import SectionHeading from "./SectionHeading.astro";
 ---
 
-<section id="skills" class="mt-36 p-4 md:p-4" >
-    <div class="max-w-screen-lg m-auto gap-2 grid">
-        <h2 class="text-primary text-5xl text-center font-primary font-semibold">Skills</h2>
-        <!-- <div
-            class="grid grid-cols-[repeat(auto-fit,_minmax(100px,_1fr))] gap-4 mt-4 justify-items-center"
-        > -->
-            <div
-            class="flex flex-row flex-wrap gap-4 mt-4 w-full justify-center"
-        >
+<section
+    id="skills"
+    class="px-4 py-16 lg:py-0 lg:flex lg:flex-col lg:justify-center"
+>
+    <div class="max-w-screen-lg m-auto w-full gap-2 grid">
+        <SectionHeading index="04" title="Skills" />
+        <div class="flex flex-row flex-wrap gap-4 mt-4 w-full">
             <SkillCard
                 title={"HTML"}
                 img={"/images/html-icon.png"}

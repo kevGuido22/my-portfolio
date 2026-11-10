@@ -1,0 +1,22 @@
+---
+interface Props {
+    index: string;
+    title: string;
+}
+
+const { index, title } = Astro.props;
+---
+
+<div class="mb-8 md:mb-10">
+    <div class="flex items-center gap-4">
+        <span class="font-mono text-xs tracking-[0.15em] text-secondary">
+            {index}
+        </span>
+        <span class="h-px flex-1 bg-primary/10" aria-hidden="true"></span>
+    </div>
+    <h2
+        class="mt-4 font-primary font-semibold text-primary leading-[1.1] text-[clamp(2rem,4vw,3.5rem)]"
+    >
+        {title}
+    </h2>
+</div>

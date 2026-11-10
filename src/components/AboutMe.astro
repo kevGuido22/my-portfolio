@@ -1,29 +1,33 @@
+---
+import SectionHeading from "./SectionHeading.astro";
+---
+
 <section
     id="aboutme"
-    class="mt-36 max-w-screen-lg m-auto gap-2 grid p-4 md:p-4"
+    class="px-4 py-16 lg:py-0 lg:flex lg:flex-col lg:justify-center"
 >
-    <h2 class="text-primary text-5xl text-center font-primary font-semibold">
-        About Me
-    </h2>
-    <div class="grid gap-6 sm:gap-0 sm:grid-cols-2 mt-8 items-center">
-        <img
-            src="/images/img3.jpg"
-            alt="image-profile"
-            class="aspect-square w-72 object-cover rounded-lg border m-auto object-center"
-        />
-        <div class="flex flex-col gap-4">
-            <p class="text-primary">
-                Hi! I'm Kevin Guido, a software developer from Costa Rica. I’m a
-                person who is committed to quality and continuous improvement. I
-                enjoy both frontend and backend development and I take on the
-                challenges they bring, always looking for useful solutions that
-                make a difference.
-            </p>
-            <p class="text-primary">
-                I consider myself self-taught and, as a professional, I always
-                give my best. I enjoy learning new things and constantly growing
-                in the world of software development.
-            </p>
+    <div class="max-w-screen-lg m-auto w-full">
+        <SectionHeading index="05" title="About Me" />
+        <div class="grid gap-6 sm:gap-0 sm:grid-cols-2 mt-8 items-center">
+            <img
+                src="/images/img3.jpg"
+                alt="image-profile"
+                class="aspect-square w-72 object-cover rounded-lg border m-auto object-center"
+            />
+            <div class="flex flex-col gap-4">
+                <p class="text-primary">
+                    Hi! I'm Kevin Guido, a software developer from Costa Rica. I’m a
+                    person who is committed to quality and continuous improvement. I
+                    enjoy both frontend and backend development and I take on the
+                    challenges they bring, always looking for useful solutions that
+                    make a difference.
+                </p>
+                <p class="text-primary">
+                    I consider myself self-taught and, as a professional, I always
+                    give my best. I enjoy learning new things and constantly growing
+                    in the world of software development.
+                </p>
+            </div>
         </div>
     </div>
 </section>
