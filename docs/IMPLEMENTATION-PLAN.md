@@ -491,9 +491,9 @@ Changes:
       el bisel) + brackets de esquina como trazado parcial; serial mono,
       micro-tag FE/BE, glifo grayscale grande (44px, alt vacío junto al
       nombre visible, lazy/async, width/height reales).
-    - Hover = activación: border fade-in + inversión a placa primary con
-      texto claro y glifo blanco sólido (brightness(0) invert(1)) — mismo
-      lenguaje de los pills del hero.
+    - Hover = targeting: los brackets de esquina visibles se extienden y
+      oscurecen a primary; placa/glifo/textos sin cambios (rev. 3 por
+      feedback — la inversión a oscuro perjudicaba algunos logos).
     - Vitrina: flex-wrap centrado; 7 por fila en desktop (13 = 7+6),
       fluido a 2 por fila en móvil (w-[calc(50%-6px)] → sm:w-32).
     - Filtro Frontend/Backend debajo de la vitrina: pills mono con
@@ -519,8 +519,8 @@ Responsive:
 Acceptance criteria:
     - Las 13 tecnologías presentes, nombres exactos actuales (orden y
       textos idénticos; Figma sigue comentado).
-    - Runas con trazado parcial en reposo (brackets) y activación en
-      hover (trazo completo + inversión oscura + glifo blanco).
+    - Runas con trazado parcial en reposo (brackets) y targeting en hover
+      (brackets extendidos a primary, sin cambio de placa/glifo).
     - Filtro: oculta exactamente las no coincidentes (hidden), aria-pressed
       correcto, readout 07/13–06/13–13/13, teclado y aria-live.
     - Sin overflow horizontal; reduced-motion instantáneo.

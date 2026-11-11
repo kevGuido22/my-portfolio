@@ -41,11 +41,10 @@ const tag = cat === "frontend" ? "FE" : "BE";
 
 <style>
     /* Rune frame: a broken trace at rest (two corner brackets + a beveled
-       corner) that completes and inverts on hover — the rune "activates".
-       All colors flow from tokens through the two scoped variables. */
+       corner). On hover the visible brackets extend and darken to primary —
+       the frame "targets" the rune; the glyph itself never changes (user
+       feedback: brand marks read better untouched). */
     .rune-card {
-        --rune-fg: var(--color-text-primary);
-        --rune-accent: var(--color-secondary);
         position: relative;
         display: flex;
         flex-direction: column;
@@ -61,9 +60,6 @@ const tag = cat === "frontend" ? "FE" : "BE";
             100% 100%,
             0 100%
         );
-        transition:
-            background-color 220ms ease,
-            border-color 220ms ease;
     }
 
     /* Partial trace: brackets on opposite corners. The beveled corner
@@ -75,43 +71,41 @@ const tag = cat === "frontend" ? "FE" : "BE";
         width: 1.25rem;
         height: 1.25rem;
         pointer-events: none;
+        transition:
+            width 220ms ease,
+            height 220ms ease,
+            border-color 220ms ease;
     }
     .rune-card::before {
         top: 0;
         left: 0;
-        border-top: 1px solid var(--rune-accent);
-        border-left: 1px solid var(--rune-accent);
+        border-top: 1px solid var(--color-secondary);
+        border-left: 1px solid var(--color-secondary);
     }
     .rune-card::after {
         right: 0;
         bottom: 0;
-        border-right: 1px solid var(--rune-accent);
-        border-bottom: 1px solid var(--rune-accent);
+        border-right: 1px solid var(--color-secondary);
+        border-bottom: 1px solid var(--color-secondary);
     }
 
     .rune-name {
-        color: var(--rune-fg);
-        transition: color 220ms ease;
+        color: var(--color-text-primary);
     }
     .rune-serial,
     .rune-tag {
-        color: var(--rune-accent);
-        transition: color 220ms ease;
+        color: var(--color-secondary);
     }
     .rune-glyph {
         filter: grayscale(1);
-        transition: filter 220ms ease;
     }
 
-    /* Activation: the trace completes and the plate inverts to dark,
-       the glyph lights up as a solid white mark. */
-    .rune-card:hover {
-        --rune-fg: var(--color-text-on-dark);
-        --rune-accent: var(--color-text-on-dark-secondary);
-        background-color: var(--color-primary);
-        border-color: var(--color-text-on-dark);
-    }
-    .rune-card:hover .rune-glyph {
-        filter: grayscale(1) brightness(0) invert(1);
+    /* Activation: the visible corner brackets extend and darken — the
+       plate and glyph stay exactly as they are at rest. */
+    .rune-card:hover::before,
+    .rune-card:hover::after {
+        width: 1.75rem;
+        height: 1.75rem;
+        border-color: var(--color-primary);
     }
 </style>

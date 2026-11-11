@@ -333,10 +333,10 @@ con las tres técnicas identificadas en las referencias.
   cierra — gap deliberado de la runa). Interior: número de serie mono,
   micro-tag de área (`FE`/`BE`), glifo de marca grande en grayscale y
   nombre verbatim.
-- **Hover = activación**: el trazado se completa (border fade-in) y la
-  runa invierte a placa oscura (primary) con texto claro y glifo blanco
-  sólido (`grayscale(1) brightness(0) invert(1)`) — mismo lenguaje de
-  inversión de los pills del hero.
+- **Hover = targeting** (rev. 3, feedback del usuario): los brackets de
+  esquina visibles se extienden (1.25rem → 1.75rem) y oscurecen a primary;
+  la placa, el glifo y los textos quedan exactamente como en reposo (la
+  inversión a oscuro se descartó porque algunos logos perdían legibilidad).
 - Vitrina: flex-wrap centrado; 7 runas por fila en desktop (13 = 7+6),
   fluido a 2 por fila en móvil. Presencia mayor al diseño anterior
   (feedback del usuario: skills muy pequeñas).
@@ -539,18 +539,20 @@ explícita.
    revela como un solo bloque. El row de Figma comentado se conserva tal
    cual (decisión del usuario); al descomentarlo hay que renumerar los
    contadores siguientes.
-10. **Skills como vitrina de runas** (Fase 6 rev. 2, 2026-11-11) — el índice
-    editorial (#9) se sustituyó por feedback del usuario (demasiado
-    simple/básico, skills muy pequeñas, quería mantener la dirección
-    futurista): tiles coleccionables tipo runa — cuadrado biselado con
-    clip-path (se evaluó diamante 45° y se descartó por legibilidad y
-    espacio útil), trazado de borde incompleto en reposo (brackets de
-    esquina, gap deliberado en el bisel) y hover que completa el trazado e
-    invierte a placa oscura con glifo blanco sólido (`brightness(0)
-    invert(1)`). Filtro Frontend/Backend debajo de la vitrina (decisión del
-    usuario) con JS nativo (`hidden` + `aria-pressed` + readout
-    `aria-live`); Docker clasificado en Backend por decisión del usuario
-    (FE 7 / BE 6). La animación de entrada al filtrar se gatea con
+10. **Skills como vitrina de runas** (Fase 6 rev. 2, 2026-11-11; hover
+    revisado en rev. 3 por feedback del usuario) — el índice editorial (#9)
+    se sustituyó por feedback del usuario (demasiado simple/básico, skills
+    muy pequeñas, quería mantener la dirección futurista): tiles
+    coleccionables tipo runa — cuadrado biselado con clip-path (se evaluó
+    diamante 45° y se descartó por legibilidad y espacio útil), trazado de
+    borde incompleto en reposo (brackets de esquina, gap deliberado en el
+    bisel). **Hover (rev. 3)**: los brackets visibles se extienden y
+    oscurecen a primary — la placa y el glifo no cambian (la inversión a
+    placa oscura con glifo blanco sólido se descartó porque algunos logos
+    perdían legibilidad). Filtro Frontend/Backend debajo de la vitrina
+    (decisión del usuario) con JS nativo (`hidden` + `aria-pressed` +
+    readout `aria-live`); Docker clasificado en Backend por decisión del
+    usuario (FE 7 / BE 6). La animación de entrada al filtrar se gatea con
     `data-touched` para no duplicar el reveal inicial.
 
 ### Puntos de validación visual (se resuelven en implementación)
