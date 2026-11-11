@@ -13,7 +13,7 @@ const sections = [
     data-section-indicator
 >
     <span
-        class="font-mono text-xs tracking-[0.15em] text-secondary"
+        class="font-mono text-xs tracking-[0.15em] text-secondary transition-colors duration-200"
         data-indicator-counter
         aria-hidden="true">01 / 05</span
     >
@@ -58,6 +58,19 @@ const sections = [
         transform: scaleX(1);
     }
 
+    /* Dark slides: the active section carries data-theme="dark" */
+    [data-section-indicator].on-dark .indicator-tick {
+        background-color: var(--color-text-on-dark-secondary);
+    }
+
+    [data-section-indicator].on-dark a[aria-current="true"] .indicator-tick {
+        background-color: var(--color-text-on-dark);
+    }
+
+    [data-section-indicator].on-dark [data-indicator-counter] {
+        color: var(--color-text-on-dark-secondary);
+    }
+
     @media (prefers-reduced-motion: reduce) {
         .indicator-tick {
             transition: none;
@@ -96,6 +109,15 @@ const sections = [
                     link.removeAttribute("aria-current");
                 }
             });
+
+            // Dark slides flag themselves via data-theme="dark"
+            const activeSection = sections.find(
+                (section) => section.id === id,
+            );
+            root.classList.toggle(
+                "on-dark",
+                activeSection?.dataset.theme === "dark",
+            );
         };
 
         const sectionAtCenter = (): HTMLElement | undefined => {

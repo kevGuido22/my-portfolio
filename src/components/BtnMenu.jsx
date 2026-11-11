@@ -58,8 +58,10 @@ export function BtnMenu() {
             aria-expanded={isOpen}
             aria-controls="mobile-menu"
             aria-label={isOpen ? "Close menu" : "Open menu"}
-            className={`sm:hidden fixed top-3.5 right-7 z-50 flex h-11 w-11 cursor-pointer items-center justify-center transition-colors duration-200 ${
-                isOpen ? "text-on-dark" : "text-primary"
+            className={`sm:hidden fixed top-3.5 right-7 z-50 flex h-11 w-11 cursor-pointer items-center justify-center rounded-chip border transition-colors duration-200 ${
+                isOpen
+                    ? "border-on-dark bg-primary text-on-dark"
+                    : "border-strong bg-surface text-primary"
             }`}
         >
             {isOpen ? <CloseIcon /> : <MenuIcon />}

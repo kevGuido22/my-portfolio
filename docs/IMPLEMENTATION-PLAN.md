@@ -331,43 +331,67 @@ Phase:
 
 Objective:
     Aplicar el momento de contraste del SPEC §8.2: sección con fondo
-    --color-dark-surface y texto on-dark, conservando la semántica <ol> y el
-    contenido existente intacto.
+    --color-dark-surface y texto on-dark, extendiendo el lenguaje HUD del
+    hero (decisión SPEC §17.7) a la primera sección de contenido, conservando
+    la semántica <ol> y el contenido profesional intacto.
 
 Components:
     - src/components/Experience.astro
+    - src/components/SectionHeading.astro
+    - src/components/SectionIndicator.astro
+    - src/components/BtnMenu.jsx
 
 Files:
-    - Experience.astro (único)
+    - Experience.astro (slide oscura completa)
+    - SectionHeading.astro (prop tone: light | dark)
+    - SectionIndicator.astro (awareness de data-theme="dark")
+    - BtnMenu.jsx (cromática pill para contraste sobre oscuro)
+    - SPEC.md §7/§8.2 (documentación)
 
 Changes:
-    - Fondo sección: --color-dark-surface (full-bleed dentro de la slide).
-    - Cabecera de sección sobre oscuro: índice "02" mono + título en
-      --color-text-on-dark.
-    - Timeline <ol> conservada: fechas en mono
-      (--color-text-on-dark-secondary), empresa como título on-dark,
-      descripción en gris claro, separadores hairline on-dark.
-    - Roles presentados como labels ("Frontend Developer Intern", "Full Stack
-      Developer") extraídos del texto existente.
-    - Contenido textual: SIN CAMBIOS (el usuario actualizará fechas él mismo).
-    - Eliminar restos de clases dark: del Experience actual si quedaran tras
-      Fase 1.
+    - Fondo sección: --color-dark-surface full-bleed; data-theme="dark".
+    - Capas HUD como el hero, adaptadas: grid técnico de hairlines
+      on-dark, wordmark "EXPERIENCE" de fondo (on-dark 8%, bleed,
+      clamp(4rem,15vw,13rem)), filas HUD en esquinas (02 / Experience,
+      estado Timeline, Scroll ↓, K. Guido).
+    - SectionHeading: prop tone="dark" → índice/hairline/título on-dark.
+      Fix preexistente: bg-primary/10 no compila en Tailwind 3.4 con
+      colores var(); se sustituye por bg-primary opacity-10 (el hairline
+      de la cabecera era invisible desde la Fase 3).
+    - Timeline <ol> conservada: rail border-on-dark, nodos h-2 w-2 con
+      ring dark-surface (máscara sobre el rail), roles como kicker mono
+      extraídos del texto ("Frontend Developer Intern", "Full Stack
+      Developer"), empresa como título on-dark, fechas y descripción en
+      on-dark-secondary.
+    - Contenido textual profesional: SIN CAMBIOS (el usuario actualizará
+      fechas él mismo).
+    - SectionIndicator: clase .on-dark cuando la sección activa lleva
+      data-theme="dark" (mismo IntersectionObserver).
+    - BtnMenu: pill rounded-chip con border — cerrado bg-surface /
+      text-primary, abierto bg-primary / border-on-dark — legible sobre
+      cualquier slide sin JS de detección de tema.
 
 Dependencies:
-    Fases 1 y 2.
+    Fases 1–3 (tokens, reveal, lenguaje HUD del hero).
 
 Responsive:
-    - Desktop: slide completa con timeline centrada.
-    - Tablet/Móvil: altura natural, padding vertical generoso.
+    - Desktop (≥1024px): slide completa (min-height calc(100svh − 4rem)),
+      timeline centrada verticalmente, HUD en las esquinas de la slide.
+    - Tablet/móvil (<1024px): altura natural, HUD arriba y abajo del
+      contenido enmarcado con padding pt-16/pt-8.
 
 Acceptance criteria:
     - Contraste on-dark AA/AAA según tokens (SPEC §4).
-    - Contenido idéntico al actual (diff de texto = vacío).
+    - Contenido profesional idéntico (h3/time/p byte-identical).
+    - Indicador lateral y BtnMenu legibles sobre la slide oscura.
+    - Cero overflow horizontal en 320px.
     - Punto de validación visual SPEC §17: si la sección oscura no convence,
       revertir a fondo claro con la misma estructura (decisión con el usuario).
 
 Validation:
-    pnpm build → PASS; inspección visual del ritmo claro→oscuro→claro.
+    pnpm build → PASS; astro check → PASS; batería CDP (fondo, HUD, wordmark,
+    indicador on-dark, BtnMenu, contraste, contenido, overflow, snap, reveal,
+    reduced-motion); inspección visual del ritmo claro→oscuro→claro.
 ```
 
 ---

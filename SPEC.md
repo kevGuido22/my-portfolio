@@ -203,6 +203,9 @@ con el indicador de diapositivas + título grande. Refuerza la lectura de
 - Un botón por sección (`<button>` con `aria-label="Ir a X"`), estado activo con
   `aria-current="true"`.
 - Estado activo: tick alargado (transición de `transform`, sin cambio de layout).
+- Aware del tema de la slide activa: si la sección lleva `data-theme="dark"`
+  (Experience), el indicador y su contador conmutan a la paleta on-dark
+  (clase `.on-dark` gestionada por el mismo `IntersectionObserver`).
 - Opcional: contador mono `01 — 05` junto al indicador (validación visual).
 - Implementación: `IntersectionObserver` nativo en `<script>` de Astro. Sin
   dependencias.
@@ -280,13 +283,21 @@ con las tres técnicas identificadas en las referencias.
 
 ### 8.2 Experience — `02` — **sección oscura** (momento de contraste)
 
-- Fondo `--color-dark-surface`, texto `--color-text-on-dark` — la banda oscura
-  de la Referencia 2 aplicada como slide de contraste a mitad de la presentación.
-- Timeline vertical conservada (semántica `<ol>` actual).
-- Cada entrada: índice/fechas en mono (`--color-text-on-dark-secondary`),
-  empresa como título, descripción en gris claro.
+- Fondo `--color-dark-surface` full-bleed, texto `--color-text-on-dark` — la banda
+  oscura de la Referencia 2 aplicada como slide de contraste a mitad de la
+  presentación. La sección se marca con `data-theme="dark"` para que el
+  indicador lateral y el botón de menú ajusten su cromática (SPEC §7).
+- Mismo lenguaje HUD que el hero (decisión §17.7), adaptado a la función de la
+  sección: grid técnico de hairlines `--color-border-on-dark`, wordmark
+  "EXPERIENCE" como fondo (on-dark al 8%, full-bleed) y filas HUD en las
+  esquinas (índice, estado, guía de scroll, marca).
+- Timeline vertical conservada (semántica `<ol>` actual): rail hairline on-dark
+  con nodos pequeños (anillo `--color-dark-surface` como máscara sobre el rail).
+- Cada entrada: rol como label mono kicker (`--color-text-on-dark-secondary`),
+  empresa como título on-dark, fechas mono y descripción en gris claro.
 - Roles extraídos del texto existente ("Frontend Developer Intern",
   "Full Stack Developer") — re-presentación, no invención.
+- `SectionHeading` soporta `tone="dark"` para la cabecera sobre oscuro.
 - Punto de validación visual: si el contraste no funciona, revertir a fondo
   claro sin cambiar la estructura.
 

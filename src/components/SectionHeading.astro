@@ -2,20 +2,39 @@
 interface Props {
     index: string;
     title: string;
+    tone?: "light" | "dark";
 }
 
-const { index, title } = Astro.props;
+const { index, title, tone = "light" } = Astro.props;
+
+const isDark = tone === "dark";
 ---
 
 <div class="mb-8 md:mb-10" data-reveal>
     <div class="flex items-center gap-4">
-        <span class="font-mono text-xs tracking-[0.15em] text-secondary">
+        <span
+            class:list={[
+                "font-mono text-xs tracking-[0.15em]",
+                isDark ? "text-on-dark-secondary" : "text-secondary",
+            ]}
+        >
             {index}
         </span>
-        <span class="h-px flex-1 bg-primary/10" aria-hidden="true"></span>
+        <!-- Tailwind 3.4 cannot compile opacity modifiers on var() colors:
+             bg-primary/10 was a dead class (invisible hairline). Element
+             opacity on a token color produces the same hairline safely. -->
+        <span
+            class:list={[
+                "h-px flex-1",
+                isDark ? "bg-on-dark opacity-20" : "bg-primary opacity-10",
+            ]}
+            aria-hidden="true"></span>
     </div>
     <h2
-        class="mt-4 font-primary font-semibold text-primary leading-[1.1] text-[clamp(2rem,4vw,3.5rem)]"
+        class:list={[
+            "mt-4 font-primary font-semibold leading-[1.1] text-[clamp(2rem,4vw,3.5rem)]",
+            isDark ? "text-on-dark" : "text-primary",
+        ]}
     >
         {title}
     </h2>
