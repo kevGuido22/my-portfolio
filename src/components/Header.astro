@@ -2,7 +2,7 @@
 import { LinkedInIcon, ResumeIcon, GithubIcon } from "../icons/icons";
 
 const pillClasses =
-    "flex items-center gap-2 rounded-chip border px-4 py-2 font-mono text-[0.625rem] uppercase tracking-[0.15em] text-secondary transition-colors duration-200 hover:border-primary hover:bg-primary hover:text-on-dark [&_svg]:h-4 [&_svg]:w-4";
+    "flex items-center gap-2 rounded-chip border px-4 py-2 font-mono text-base uppercase tracking-[0.15em] text-secondary transition-colors duration-200 hover:border-primary hover:bg-primary hover:text-on-dark [&_svg]:h-4 [&_svg]:w-4";
 ---
 
 <section
@@ -30,10 +30,10 @@ const pillClasses =
         class="pointer-events-none absolute inset-0 z-0 select-none"
     >
         <p
-            class="absolute left-1/2 top-1/2 w-max -translate-x-1/2 -translate-y-1/2 text-center font-primary text-[clamp(4rem,17vw,15rem)] font-bold uppercase leading-[0.9] tracking-tight text-primary opacity-10"
+            class="absolute left-1/2 top-1/2 w-max -translate-x-1/2 -translate-y-1/2 text-center font-primary text-[clamp(4rem,17vw,15rem)] font-bold uppercase leading-[0.9] tracking-wide text-primary opacity-10 flex flex-col md:gap-10"
         >
             <span class="block">Software</span>
-            <span class="block">Developer</span>
+            <span class="block">Engineer</span>
         </p>
     </div>
 
@@ -61,7 +61,7 @@ const pillClasses =
             >
                 Kevin Guido Urbina
             </h1>
-            <div class="flex flex-wrap gap-3" data-reveal>
+            <div class="flex flex-wrap gap-3 text-md" data-reveal>
                 <a
                     href="https://github.com/kevGuido22"
                     target="_blank"
