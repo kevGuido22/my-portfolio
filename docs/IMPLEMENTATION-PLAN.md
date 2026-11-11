@@ -479,23 +479,35 @@ Files:
     - Skills.astro, SkillCard.astro (o SkillRow.astro nuevo).
 
 Changes:
-    - Filas: icono pequeño en grayscale + nombre tecnología + hairline
-      border-bottom; hover con background surface.
-    - Conservar las 13 tecnologías actuales exactas (sin añadir/quitar).
-    - Iconos: filter grayscale(1), width/height explícitos, alt existente.
+    - Slide HUD clara espejo de las demás: grid técnico de hairlines, HUD de
+      esquinas (04 / Skills · Stack / Scroll ↓ · K. Guido) y wordmark SKILLS
+      (primary 10%) detrás de la lista.
+    - Filas índice: contador mono 01–13 + icono pequeño grayscale (decorativo,
+      alt vacío junto al nombre visible) + nombre exacto de la tecnología;
+      hairline border-bottom; hover sutil (background surface).
+    - Dos columnas column-major en lg vía CSS columns (balanceadas 7/6 como
+      índice de libro); una columna en tablet/móvil.
+    - SkillCard refactorizado in-place a fila (li): mismas Props + index y
+      width/height opcionales (dimensiones reales medidas de los PNG).
+    - Conservar las 13 tecnologías actuales exactas (sin añadir/quitar);
+      el row de Figma comentado se conserva (al descomentarlo, renumerar).
+    - La lista completa se revela como un solo bloque (no 13 reveals).
     - Punto de validación visual SPEC §17: si la lista no convence, la
       alternativa aceptada es grid de tiles pequeños.
 
 Dependencies:
-    Fases 1 y 2.
+    Fases 1, 2 y 4 (sistema reveal, slide HUD).
 
 Responsive:
-    - Desktop: lista en columna(s) según cantidad (1–2 columnas de filas).
+    - Desktop: lista en 2 columnas balanceadas (column-major).
     - Tablet/Móvil: una columna de filas full-width.
 
 Acceptance criteria:
-    - Las 13 tecnologías presentes, nombres exactos actuales.
-    - Sin cards con blur/shine; hover sutil.
+    - Las 13 tecnologías presentes, nombres exactos actuales (orden y
+      textos idénticos; Figma sigue comentado).
+    - Filas con contador mono, icono grayscale con width/height, hairline;
+      hover sutil background surface; sin blur/shine.
+    - 2 columnas column-major en lg; 1 columna por debajo.
     - Sin overflow horizontal.
 
 Validation:

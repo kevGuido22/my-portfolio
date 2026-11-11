@@ -1,16 +1,30 @@
 ---
-interface Props{
-    img: string,
-    title: string
+interface Props {
+    img: string;
+    title: string;
+    index: string;
+    width?: number;
+    height?: number;
 }
 
-const { img, title } = Astro.props;
-
+const { img, title, index, width, height } = Astro.props;
 ---
 
-<div
-    class="w-28 flex flex-col justify-center items-center gap-2 p-4 rounded-card bg-surface border"
+<!-- Index row: mono counter + grayscale brand icon + technology name.
+     The icon is decorative (the name is adjacent visible text), so it
+     carries an empty alt. -->
+<li
+    class="flex items-center gap-3 border-b px-2 py-3.5 break-inside-avoid transition-colors duration-200 hover:bg-surface sm:gap-4 sm:px-3"
 >
-    <img src={img} alt={`${title}-image`} class="h-10 aspect-square object-contain">
-    <p class="text-primary">{title}</p>
-</div>
+    <span class="w-7 font-mono text-xs text-secondary">{index}</span>
+    <img
+        src={img}
+        alt=""
+        width={width}
+        height={height}
+        loading="lazy"
+        decoding="async"
+        class="h-6 w-6 flex-none object-contain grayscale"
+    />
+    <span class="font-primary text-base text-primary">{title}</span>
+</li>

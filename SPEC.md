@@ -323,11 +323,18 @@ con las tres técnicas identificadas en las referencias.
 
 ### 8.4 Skills — `04` — fondo claro, lista índice editorial
 
-- Alternativa deliberada al bento de Projects: **lista tipo índice** — filas con
-  hairline border-bottom, icono pequeño en escala de grises + nombre de
-  tecnología, hover sutil (background surface).
-- Distingue la sección de Projects (composición propia por sección).
-- Punto de validación visual: alternativa aceptada = grid de tiles pequeños.
+- Slide HUD clara espejo de las demás: grid técnico de hairlines, HUD de
+  esquinas (`04 / Skills` · `Stack` arriba, `Scroll ↓` · `K. Guido` abajo)
+  y wordmark `SKILLS` (primary al 10%) detrás de la lista.
+- Alternativa deliberada al bento de Projects: **lista tipo índice** — filas
+  hairline border-bottom con contador mono (`01`–`13`), icono de marca en
+  escala de grises (decorativo: `alt` vacío junto al nombre visible) y el
+  nombre exacto de la tecnología; hover sutil (background surface).
+- Dos columnas balanceadas en desktop (column-major, como índice de libro,
+  vía CSS columns); una columna en tablet/móvil.
+- `SkillCard` refactorizado en fila (`li`) in-place: mismas Props más
+  `index` y `width`/`height` opcionales; las 13 tecnologías exactas se
+  conservan (Figma permanece comentado por decisión del usuario).
 
 ### 8.5 About Me — `05` — fondo claro
 
@@ -503,6 +510,16 @@ explícita.
    permanece de trazo como icono de utilidad — contraste deliberado con las
    marcas sólidas (GitHub/LinkedIn/Resume); se limpian los nodos de espacio
    sobrantes del JSX.
+9. **Skills como índice** (Fase 6, 2026-11-11) — lista editorial de filas
+   hairline con contador mono `01`–`13` + icono grayscale + nombre exacto
+   (composición propia, deliberadamente distinta del bento de Projects);
+   dos columnas column-major en `lg` vía CSS columns (balanceadas 7/6 como
+   un índice de libro), una columna en móvil. `SkillCard` se refactorea
+   in-place a fila (`li`, mismo nombre de archivo): icono decorativo con
+   `alt=""` (el nombre es texto visible adyacente — evita doble lectura en
+   lectores de pantalla). La lista se revela como un solo bloque. El row de
+   Figma comentado se conserva tal cual (decisión del usuario); al
+   descomentarlo hay que renumerar los contadores siguientes.
 
 ### Puntos de validación visual (se resuelven en implementación)
 
