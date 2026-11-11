@@ -252,10 +252,12 @@ con las tres técnicas identificadas en las referencias.
 - **Capa 0 — grid técnico:** hairlines verticales 1px (borde del contenedor +
   divisiones internas; 2 columnas en móvil, 4 en desktop) como retícula técnica
   sutil.
-- **Capa 0 — tipografía de fondo:** "SOFTWARE DEVELOPER" gigante en uppercase
-  (`clamp(3.5rem, 12vw, 10rem)`), opacity ~10%, sin wrap — desborda y se
-  recorta en los bordes de la sección (bleed intencional, nunca scroll
-  horizontal: `overflow-hidden`).
+- **Capa 0 — tipografía de fondo:** "SOFTWARE" / "DEVELOPER" en dos líneas
+  apiladas y centradas (uppercase, `clamp(4rem, 17vw, 15rem)`, line-height
+  0.9, opacity ~10%) — llena ~98–100% del ancho de pantalla y se recorta en
+  los bordes de la sección (bleed intencional, nunca scroll horizontal:
+  `overflow-hidden`). Decisión del usuario: tamaño a sangre + palabras
+  centradas (2026-11-10).
 - **Capa 1 — retrato cutout:** PNG con transparencia (`public/images/Profile.png`,
   720×1280, sujeto apoyado en el borde inferior y zona transparente superior).
   Escala de grises, se apoya en la línea de base de la diapositiva y se solapa
@@ -465,6 +467,13 @@ explícita.
    Asset nuevo: `public/images/Profile.png` (cutout con transparencia, aportado
    por el usuario). `Profile.png` sustituye a `profile.webp` en el hero;
    `profile.webp` se conserva en el repo hasta decidir si se usa en About Me.
+7. **Lenguaje HUD extensivo a todas las secciones** (usuario, 2026-11-10) — la
+   dirección "fluida y solapada" del hero (capas, tipografía de fondo,
+   solapamientos, micro-elementos de interfaz futurista) se aplica también al
+   diseño de las secciones restantes en las Fases 4–7 (Experience, Projects,
+   Skills, About), adaptada al contenido y función de cada una — sin replicar
+   literalmente la composición del hero ni uniformar las secciones (SPEC §6:
+   cada sección conserva composición propia).
 
 ### Puntos de validación visual (se resuelven en implementación)
 
