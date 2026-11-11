@@ -321,20 +321,38 @@ con las tres técnicas identificadas en las referencias.
   las pills del hero: borde hairline, hover invertido (fondo primary, texto
   surface), `target="_blank" rel="noopener noreferrer"`.
 
-### 8.4 Skills — `04` — fondo claro, lista índice editorial
+### 8.4 Skills — `04` — fondo claro, vitrina de runas coleccionables
 
 - Slide HUD clara espejo de las demás: grid técnico de hairlines, HUD de
-  esquinas (`04 / Skills` · `Stack` arriba, `Scroll ↓` · `K. Guido` abajo)
-  y wordmark `SKILLS` (primary al 10%) detrás de la lista.
-- Alternativa deliberada al bento de Projects: **lista tipo índice** — filas
-  hairline border-bottom con contador mono (`01`–`13`), icono de marca en
-  escala de grises (decorativo: `alt` vacío junto al nombre visible) y el
-  nombre exacto de la tecnología; hover sutil (background surface).
-- Dos columnas balanceadas en desktop (column-major, como índice de libro,
-  vía CSS columns); una columna en tablet/móvil.
-- `SkillCard` refactorizado en fila (`li`) in-place: mismas Props más
-  `index` y `width`/`height` opcionales; las 13 tecnologías exactas se
-  conservan (Figma permanece comentado por decisión del usuario).
+  esquinas (`04 / Skills` · `Runes / 13` arriba, `Scroll ↓` · `K. Guido`
+  abajo) y wordmark `SKILLS` (primary al 10%) detrás de la vitrina (las
+  runas son placas transparentes en reposo).
+- Las 13 tecnologías exactas como **runas coleccionables**: tiles
+  cuadrados con esquina biselada (clip-path) y **trazado de borde
+  incompleto** en reposo (dos brackets de esquina; el bisel nunca se
+  cierra — gap deliberado de la runa). Interior: número de serie mono,
+  micro-tag de área (`FE`/`BE`), glifo de marca grande en grayscale y
+  nombre verbatim.
+- **Hover = activación**: el trazado se completa (border fade-in) y la
+  runa invierte a placa oscura (primary) con texto claro y glifo blanco
+  sólido (`grayscale(1) brightness(0) invert(1)`) — mismo lenguaje de
+  inversión de los pills del hero.
+- Vitrina: flex-wrap centrado; 7 runas por fila en desktop (13 = 7+6),
+  fluido a 2 por fila en móvil. Presencia mayor al diseño anterior
+  (feedback del usuario: skills muy pequeñas).
+- **Filtro Frontend / Backend debajo de la vitrina**: pills mono con
+  `aria-pressed` (activa = relleno primary); JS nativo sin dependencias
+  oculta las runas no coincidentes con `hidden` (salen del árbol de
+  accesibilidad); readout HUD `07 / 13` como región `aria-live` polite;
+  las runas entran con un fade sutil solo al filtrar (`data-touched`
+  gatea la animación; instantáneo con reduced-motion por el clamp
+  global). Clasificación (decisión del usuario): Frontend = HTML, CSS,
+  JavaScript, Typescript, React, SASS, TailwindCSS (7); Backend = PHP,
+  Laravel, MySQL, Java, SpringBoot, Docker (6).
+- `SkillCard` refactorizado a runa (mismo nombre de archivo): Props +
+  `index`, `cat` y `width`/`height` opcionales (dimensiones reales de los
+  PNG); glifo decorativo con `alt=""` junto al nombre visible. Figma
+  permanece comentado (al descomentarlo, renumerar los seriales).
 
 ### 8.5 About Me — `05` — fondo claro
 
@@ -510,16 +528,30 @@ explícita.
    permanece de trazo como icono de utilidad — contraste deliberado con las
    marcas sólidas (GitHub/LinkedIn/Resume); se limpian los nodos de espacio
    sobrantes del JSX.
-9. **Skills como índice** (Fase 6, 2026-11-11) — lista editorial de filas
-   hairline con contador mono `01`–`13` + icono grayscale + nombre exacto
-   (composición propia, deliberadamente distinta del bento de Projects);
-   dos columnas column-major en `lg` vía CSS columns (balanceadas 7/6 como
-   un índice de libro), una columna en móvil. `SkillCard` se refactorea
-   in-place a fila (`li`, mismo nombre de archivo): icono decorativo con
-   `alt=""` (el nombre es texto visible adyacente — evita doble lectura en
-   lectores de pantalla). La lista se revela como un solo bloque. El row de
-   Figma comentado se conserva tal cual (decisión del usuario); al
-   descomentarlo hay que renumerar los contadores siguientes.
+9. **Skills como índice** (Fase 6, 2026-11-11, **sustituido por #10**) —
+   lista editorial de filas hairline con contador mono `01`–`13` + icono
+   grayscale + nombre exacto (composición propia, deliberadamente distinta
+   del bento de Projects); dos columnas column-major en `lg` vía CSS columns
+   (balanceadas 7/6 como un índice de libro), una columna en móvil.
+   `SkillCard` se refactorea in-place a fila (`li`, mismo nombre de
+   archivo): icono decorativo con `alt=""` (el nombre es texto visible
+   adyacente — evita doble lectura en lectores de pantalla). La lista se
+   revela como un solo bloque. El row de Figma comentado se conserva tal
+   cual (decisión del usuario); al descomentarlo hay que renumerar los
+   contadores siguientes.
+10. **Skills como vitrina de runas** (Fase 6 rev. 2, 2026-11-11) — el índice
+    editorial (#9) se sustituyó por feedback del usuario (demasiado
+    simple/básico, skills muy pequeñas, quería mantener la dirección
+    futurista): tiles coleccionables tipo runa — cuadrado biselado con
+    clip-path (se evaluó diamante 45° y se descartó por legibilidad y
+    espacio útil), trazado de borde incompleto en reposo (brackets de
+    esquina, gap deliberado en el bisel) y hover que completa el trazado e
+    invierte a placa oscura con glifo blanco sólido (`brightness(0)
+    invert(1)`). Filtro Frontend/Backend debajo de la vitrina (decisión del
+    usuario) con JS nativo (`hidden` + `aria-pressed` + readout
+    `aria-live`); Docker clasificado en Backend por decisión del usuario
+    (FE 7 / BE 6). La animación de entrada al filtrar se gatea con
+    `data-touched` para no duplicar el reveal inicial.
 
 ### Puntos de validación visual (se resuelven en implementación)
 

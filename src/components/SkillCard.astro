@@ -3,28 +3,115 @@ interface Props {
     img: string;
     title: string;
     index: string;
+    cat: "frontend" | "backend";
     width?: number;
     height?: number;
 }
 
-const { img, title, index, width, height } = Astro.props;
+const { img, title, index, cat, width, height } = Astro.props;
+
+const tag = cat === "frontend" ? "FE" : "BE";
 ---
 
-<!-- Index row: mono counter + grayscale brand icon + technology name.
-     The icon is decorative (the name is adjacent visible text), so it
-     carries an empty alt. -->
-<li
-    class="flex items-center gap-3 border-b px-2 py-3.5 break-inside-avoid transition-colors duration-200 hover:bg-surface sm:gap-4 sm:px-3"
->
-    <span class="w-7 font-mono text-xs text-secondary">{index}</span>
-    <img
-        src={img}
-        alt=""
-        width={width}
-        height={height}
-        loading="lazy"
-        decoding="async"
-        class="h-6 w-6 flex-none object-contain grayscale"
-    />
-    <span class="font-primary text-base text-primary">{title}</span>
+<!-- Collectible rune tile. The li carries no display utility so the
+     filter script can hide it with the native `hidden` attribute. -->
+<li data-cat={cat} class="w-[calc(50%_-_6px)] sm:w-32">
+    <div class="rune-card">
+        <div
+            class="flex w-full items-center justify-between font-mono text-[0.625rem] uppercase tracking-[0.15em]"
+        >
+            <span class="rune-serial">{index}</span>
+            <span class="rune-tag">{tag}</span>
+        </div>
+        <!-- Decorative glyph: the name is adjacent visible text -->
+        <img
+            src={img}
+            alt=""
+            width={width}
+            height={height}
+            loading="lazy"
+            decoding="async"
+            class="rune-glyph h-11 w-11 flex-none object-contain grayscale"
+        />
+        <p class="rune-name font-primary text-center text-sm font-medium">
+            {title}
+        </p>
+    </div>
 </li>
+
+<style>
+    /* Rune frame: a broken trace at rest (two corner brackets + a beveled
+       corner) that completes and inverts on hover — the rune "activates".
+       All colors flow from tokens through the two scoped variables. */
+    .rune-card {
+        --rune-fg: var(--color-text-primary);
+        --rune-accent: var(--color-secondary);
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        aspect-ratio: 5 / 6;
+        padding: 0.875rem 0.625rem 0.75rem;
+        border: 1px solid transparent;
+        clip-path: polygon(
+            0 0,
+            calc(100% - 0.875rem) 0,
+            100% 0.875rem,
+            100% 100%,
+            0 100%
+        );
+        transition:
+            background-color 220ms ease,
+            border-color 220ms ease;
+    }
+
+    /* Partial trace: brackets on opposite corners. The beveled corner
+       never gets one — the rune keeps a deliberate gap in its outline. */
+    .rune-card::before,
+    .rune-card::after {
+        content: "";
+        position: absolute;
+        width: 1.25rem;
+        height: 1.25rem;
+        pointer-events: none;
+    }
+    .rune-card::before {
+        top: 0;
+        left: 0;
+        border-top: 1px solid var(--rune-accent);
+        border-left: 1px solid var(--rune-accent);
+    }
+    .rune-card::after {
+        right: 0;
+        bottom: 0;
+        border-right: 1px solid var(--rune-accent);
+        border-bottom: 1px solid var(--rune-accent);
+    }
+
+    .rune-name {
+        color: var(--rune-fg);
+        transition: color 220ms ease;
+    }
+    .rune-serial,
+    .rune-tag {
+        color: var(--rune-accent);
+        transition: color 220ms ease;
+    }
+    .rune-glyph {
+        filter: grayscale(1);
+        transition: filter 220ms ease;
+    }
+
+    /* Activation: the trace completes and the plate inverts to dark,
+       the glyph lights up as a solid white mark. */
+    .rune-card:hover {
+        --rune-fg: var(--color-text-on-dark);
+        --rune-accent: var(--color-text-on-dark-secondary);
+        background-color: var(--color-primary);
+        border-color: var(--color-text-on-dark);
+    }
+    .rune-card:hover .rune-glyph {
+        filter: grayscale(1) brightness(0) invert(1);
+    }
+</style>

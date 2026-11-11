@@ -460,58 +460,74 @@ Validation:
 
 ---
 
-## Fase 6 — Skills — lista índice
+## Fase 6 — Skills — vitrina de runas coleccionables
 
 ```text
 Phase:
-    Fase 6 — Skills como índice editorial
+    Fase 6 — Skills como vitrina de runas (rev. 2 tras feedback del
+    usuario: el índice editorial era demasiado simple y las skills muy
+    pequeñas)
 
 Objective:
-    Composición alternativa deliberada al bento (SPEC §8.4): lista tipo
-    índice con filas hairline, en lugar de grid de tarjetas.
+    Las 13 tecnologías como runas coleccionables futuristas (SPEC §8.4):
+    tiles biselados con trazado de borde incompleto que se completa e
+    invierte en hover, más un filtro Frontend/Backend debajo de la
+    vitrina.
 
 Components:
-    - src/components/Skills.astro
-    - src/components/SkillCard.astro (refactor a fila) o sustitución por
-      SkillRow.astro (nuevo) reutilizando la info existente.
+    - src/components/Skills.astro (vitrina + filtro + script nativo)
+    - src/components/SkillCard.astro (refactor a runa, mismo nombre de
+      archivo)
 
 Files:
-    - Skills.astro, SkillCard.astro (o SkillRow.astro nuevo).
+    - Skills.astro, SkillCard.astro.
 
 Changes:
     - Slide HUD clara espejo de las demás: grid técnico de hairlines, HUD de
-      esquinas (04 / Skills · Stack / Scroll ↓ · K. Guido) y wordmark SKILLS
-      (primary 10%) detrás de la lista.
-    - Filas índice: contador mono 01–13 + icono pequeño grayscale (decorativo,
-      alt vacío junto al nombre visible) + nombre exacto de la tecnología;
-      hairline border-bottom; hover sutil (background surface).
-    - Dos columnas column-major en lg vía CSS columns (balanceadas 7/6 como
-      índice de libro); una columna en tablet/móvil.
-    - SkillCard refactorizado in-place a fila (li): mismas Props + index y
-      width/height opcionales (dimensiones reales medidas de los PNG).
-    - Conservar las 13 tecnologías actuales exactas (sin añadir/quitar);
-      el row de Figma comentado se conserva (al descomentarlo, renumerar).
-    - La lista completa se revela como un solo bloque (no 13 reveals).
-    - Punto de validación visual SPEC §17: si la lista no convence, la
-      alternativa aceptada es grid de tiles pequeños.
+      esquinas (04 / Skills · Runes / 13 / Scroll ↓ · K. Guido) y wordmark
+      SKILLS (primary 10%) detrás de la vitrina (runas transparentes en
+      reposo).
+    - Runa: tile cuadrado biselado (clip-path, gap de borde deliberado en
+      el bisel) + brackets de esquina como trazado parcial; serial mono,
+      micro-tag FE/BE, glifo grayscale grande (44px, alt vacío junto al
+      nombre visible, lazy/async, width/height reales).
+    - Hover = activación: border fade-in + inversión a placa primary con
+      texto claro y glifo blanco sólido (brightness(0) invert(1)) — mismo
+      lenguaje de los pills del hero.
+    - Vitrina: flex-wrap centrado; 7 por fila en desktop (13 = 7+6),
+      fluido a 2 por fila en móvil (w-[calc(50%-6px)] → sm:w-32).
+    - Filtro Frontend/Backend debajo de la vitrina: pills mono con
+      aria-pressed (activa = relleno primary); JS nativo sin dependencias
+      oculta las no coincidentes con hidden (fuera del árbol a11y);
+      readout 07 / 13 con aria-live polite; fade de entrada al filtrar
+      gateado por data-touched (instantáneo con reduced-motion).
+    - Clasificación (usuario): Frontend = HTML, CSS, JavaScript,
+      Typescript, React, SASS, TailwindCSS (7); Backend = PHP, Laravel,
+      MySQL, Java, SpringBoot, Docker (6).
+    - Conservar las 13 tecnologías exactas (orden y textos); Figma
+      comentado se conserva (al descomentarlo, renumerar seriales).
+    - La vitrina se revela como un solo bloque; 5 data-reveals en la
+      sección (HUD, heading, vitrina, filtro, HUD).
 
 Dependencies:
     Fases 1, 2 y 4 (sistema reveal, slide HUD).
 
 Responsive:
-    - Desktop: lista en 2 columnas balanceadas (column-major).
-    - Tablet/Móvil: una columna de filas full-width.
+    - Desktop: 7 runas por fila (2 filas: 7+6); filtrado = 1 fila.
+    - Tablet: 4–5 por fila; Móvil: 2 por fila fluido.
 
 Acceptance criteria:
     - Las 13 tecnologías presentes, nombres exactos actuales (orden y
       textos idénticos; Figma sigue comentado).
-    - Filas con contador mono, icono grayscale con width/height, hairline;
-      hover sutil background surface; sin blur/shine.
-    - 2 columnas column-major en lg; 1 columna por debajo.
-    - Sin overflow horizontal.
+    - Runas con trazado parcial en reposo (brackets) y activación en
+      hover (trazo completo + inversión oscura + glifo blanco).
+    - Filtro: oculta exactamente las no coincidentes (hidden), aria-pressed
+      correcto, readout 07/13–06/13–13/13, teclado y aria-live.
+    - Sin overflow horizontal; reduced-motion instantáneo.
 
 Validation:
-    pnpm build → PASS; inspección visual.
+    pnpm build → astro check → probe CDP Fase 6 (runas, hover, filtro,
+    teclado) → batería de regresión → inspección visual.
 ```
 
 ---
