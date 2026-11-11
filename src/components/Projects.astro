@@ -6,78 +6,144 @@ import SectionHeading from "./SectionHeading.astro";
 
 <section
     id="projects"
-    class="px-4 py-16 lg:py-0 lg:flex lg:flex-col lg:justify-center"
+    class="relative flex flex-col gap-4 overflow-hidden px-4 pb-6 pt-16 sm:gap-6 lg:pt-0"
 >
-    <div class="max-w-screen-lg m-auto w-full gap-2 grid">
+    <!-- Layer 0: technical grid (hairlines) -->
+    <div
+        aria-hidden="true"
+        class="pointer-events-none absolute inset-0 z-0 flex justify-center px-4"
+    >
+        <div
+            class="grid h-full w-full max-w-screen-lg grid-cols-2 border-x lg:grid-cols-4"
+        >
+            <span class="border-r"></span>
+            <span class="hidden border-r lg:block"></span>
+            <span class="hidden border-r lg:block"></span>
+            <span class="hidden lg:block"></span>
+        </div>
+    </div>
+
+    <!-- Layer 0: typography as background (single word, bleed; the bento
+         cards are opaque surfaces, so the wordmark only shows through the
+         grid gaps and never fights the content for attention) -->
+    <div
+        aria-hidden="true"
+        class="pointer-events-none absolute inset-0 z-0 select-none"
+    >
+        <p
+            class="absolute left-1/2 top-1/2 w-max -translate-x-1/2 -translate-y-1/2 text-center font-primary text-[clamp(4rem,15vw,13rem)] font-bold uppercase leading-[0.9] tracking-wide text-primary opacity-10"
+        >
+            Projects
+        </p>
+    </div>
+
+    <!-- HUD: top corners -->
+    <div
+        aria-hidden="true"
+        class="relative z-20 mx-auto flex w-full max-w-screen-lg items-center justify-between font-mono text-[0.625rem] uppercase tracking-[0.2em] text-secondary"
+        data-reveal
+    >
+        <span>03 / Projects</span>
+        <span class="flex items-center gap-2">
+            <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
+            Selected work
+        </span>
+    </div>
+
+    <!-- Bento grid (owns the slide center) -->
+    <div
+        class="relative z-10 mx-auto flex w-full max-w-screen-lg flex-1 flex-col justify-center pt-8 lg:pt-0"
+    >
         <div>
             <SectionHeading index="03" title="Projects" />
-            <p class="text-secondary font-primary mt-4" data-reveal>
+            <p class="text-secondary font-primary mt-4 max-w-2xl" data-reveal>
                 Some of the projects I have worked. I used different
                 technologies and skills in frontend and backend development, as
                 well as in UX/UI design and devOps. This allowed me to solve
                 technical challenges and create solutions in different areas of
                 software development.
             </p>
+            <div
+                class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-12 lg:gap-6"
+            >
+                <div class="lg:col-span-7" data-reveal>
+                    <HorizontalCard
+                        title={"SpringBoot micro-services"}
+                        img={"/images/micro-services.webp"}
+                        width={4201}
+                        height={3701}
+                        description={"This is a practice project built to learn and explore microservices architecture using Spring Boot. Each microservice is containerized with Docker, and database migrations are managed with Flyway to ensure version control. An API Gateway was implemented to handle all requests through a single entry point, improving scalability and routing. To ensure resilience, Resilience4j was added to manage failures when services do not respond. Keycloak was integrated for authentication and authorization, providing centralized and secure identity management across all services."}
+                        tags={[
+                            "SpringBoot",
+                            "API Gateway",
+                            "Flyway",
+                            "Docker",
+                            "Resilience4j",
+                            "Keycloak",
+                            "SpringCloud",
+                        ]}
+                        gitHub={"https://github.com/kevGuido22/microservices-project"}
+                    />
+                </div>
+                <div class="lg:col-span-5" data-reveal>
+                    <Card
+                        title={"Spotify Clone"}
+                        img={"/images/spotify.webp"}
+                        width={1920}
+                        height={928}
+                        description={"This is a Spotify clone built using the Astro framework and TypeScript. React components were also added to apply the concept of Islands of Interactivity offered by Astro. Astro Transitions were used to improve the navigation experience between pages. For managing the global state, the Zustand library was chosen, making it easy and efficient to handle the application’s state."}
+                        tags={[
+                            "HTML",
+                            "TypeScript",
+                            "React",
+                            "Astro",
+                            "Tailwind",
+                            "Zustand",
+                        ]}
+                        web={"https://spotify-clone-rho-bay.vercel.app/"}
+                        gitHub={"https://github.com/kevGuido22/spotify-clone"}
+                    />
+                </div>
+                <div class="lg:col-span-6" data-reveal>
+                    <Card
+                        title={"Suru - Frontend"}
+                        img={"/images/suru-frontend.webp"}
+                        width={1902}
+                        height={907}
+                        description={"SURU is a real estate web platform developed as a university project in collaboration with classmates. We used React for the frontend and consumed an API that we also built ourselves. For HTTP requests, we used Axios, and we managed navigation with React Router, implementing both public and private routes.We also used Tailwind CSS for styling. SURU includes features like user login, user settings, an appointment system, property filters, an admin dashboard, dark mode, and more."}
+                        tags={[
+                            "HTML",
+                            "TailwindCSS",
+                            "React",
+                            "JavaScript",
+                            "React Router",
+                        ]}
+                        web={"https://suru-development.vercel.app/"}
+                        gitHub={"https://github.com/Agile-Innovators/SURU-Development"}
+                    />
+                </div>
+                <div class="lg:col-span-6" data-reveal>
+                    <Card
+                        title={"Suru - Backend"}
+                        img={"/images/api-laravel.webp"}
+                        width={2000}
+                        height={2000}
+                        description={"SURU Backend is a RESTful API that powers the frontend of our SURU platform. The backend is built with Laravel and uses a MySQL database.We implemented features such as authentication with JWT, as well as seeders and migrations for managing the database structure and test data.We also use Cloudinary to store and manage uploaded images."}
+                        tags={["Laravel", "PHP", "MySQL", "Cloudinary", "JWT", "RESTful API"]}
+                        gitHub={"https://github.com/Agile-Innovators/suru-backend"}
+                    />
+                </div>
+            </div>
         </div>
-        <div data-reveal>
-            <HorizontalCard
-                title={"SpringBoot micro-services"}
-                img={"/images/micro-services.webp"}
-                description={"This is a practice project built to learn and explore microservices architecture using Spring Boot. Each microservice is containerized with Docker, and database migrations are managed with Flyway to ensure version control. An API Gateway was implemented to handle all requests through a single entry point, improving scalability and routing. To ensure resilience, Resilience4j was added to manage failures when services do not respond. Keycloak was integrated for authentication and authorization, providing centralized and secure identity management across all services."}
-                tags={[
-                    "SpringBoot",
-                    "API Gateway",
-                    "Flyway",
-                    "Docker",
-                    "Resilience4j",
-                    "Keycloak",
-                    "SpringCloud",
-                ]}
-                gitHub={"https://github.com/kevGuido22/microservices-project"}
-            />
-        </div>
-        <div data-reveal>
-            <HorizontalCard
-                title={"Spotify Clone"}
-                img={"/images/spotify.webp"}
-                description={"This is a Spotify clone built using the Astro framework and TypeScript. React components were also added to apply the concept of Islands of Interactivity offered by Astro. Astro Transitions were used to improve the navigation experience between pages. For managing the global state, the Zustand library was chosen, making it easy and efficient to handle the application’s state."}
-                tags={[
-                    "HTML",
-                    "TypeScript",
-                    "React",
-                    "Astro",
-                    "Tailwind",
-                    "Zustand",
-                ]}
-                web={"https://spotify-clone-rho-bay.vercel.app/"}
-                gitHub={"https://github.com/kevGuido22/spotify-clone"}
-            />
-        </div>
-        <div
-            class="grid grid-cols-[repeat(auto-fill,_minmax(min(350px,_100%),_1fr))] gap-4 mt-4"
-            data-reveal
-        >
-            <Card
-                title={"Suru - Frontend"}
-                img={"/images/suru-frontend.webp"}
-                description={"SURU is a real estate web platform developed as a university project in collaboration with classmates. We used React for the frontend and consumed an API that we also built ourselves. For HTTP requests, we used Axios, and we managed navigation with React Router, implementing both public and private routes.We also used Tailwind CSS for styling. SURU includes features like user login, user settings, an appointment system, property filters, an admin dashboard, dark mode, and more."}
-                tags={[
-                    "HTML",
-                    "TailwindCSS",
-                    "React",
-                    "JavaScript",
-                    "React Router",
-                ]}
-                web={"https://suru-development.vercel.app/"}
-                gitHub={"https://github.com/Agile-Innovators/SURU-Development"}
-            />
-            <Card
-                title={"Suru - Backend"}
-                img={"/images/api-laravel.webp"}
-                description={"SURU Backend is a RESTful API that powers the frontend of our SURU platform. The backend is built with Laravel and uses a MySQL database.We implemented features such as authentication with JWT, as well as seeders and migrations for managing the database structure and test data.We also use Cloudinary to store and manage uploaded images."}
-                tags={["Laravel", "PHP", "MySQL", "Cloudinary", "JWT", "RESTful API"]}
-                gitHub={"https://github.com/Agile-Innovators/suru-backend"}
-            />
-        </div>
+    </div>
+
+    <!-- HUD: bottom corners -->
+    <div
+        aria-hidden="true"
+        class="relative z-20 mx-auto flex w-full max-w-screen-lg items-center justify-between font-mono text-[0.625rem] uppercase tracking-[0.2em] text-secondary"
+        data-reveal
+    >
+        <span class="flex items-center gap-2">Scroll <span>↓</span></span>
+        <span>K. Guido</span>
     </div>
 </section>

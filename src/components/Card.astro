@@ -10,29 +10,37 @@ interface Props {
     tags: Array<string>;
     web?: string;
     gitHub?: string;
+    width?: number;
+    height?: number;
 }
 
-const { title, img, description, tags, web, gitHub } = Astro.props;
+const { title, img, description, tags, web, gitHub, width, height } = Astro.props;
 ---
 
-<div class="grid rounded-card overflow-hidden bg-surface border">
-    <div class="grid grid-rows-[auto_1fr]">
-        <img src={img} alt="" class="h-[17rem] w-full object-cover" />
-        <div class="h-full self-start p-6">
-            <h3 class="text-primary font-primary text-xl font-bold">
-                {title}
-            </h3>
-            <p class="text-secondary font-primary">
-                {description}
-            </p>
-            <div class="flex flex-grow items-end">
-                <div class="mt-4 items-center flex gap-2 flex-wrap">
-                    {tags.map((tag) => <Tag name={tag} />)}
-                </div>
-            </div>
+<div
+    class="flex h-full flex-col overflow-hidden rounded-card border bg-surface transition-colors duration-300 hover:border-strong"
+>
+    <img
+        src={img}
+        alt={`Screenshot of the ${title} project`}
+        width={width}
+        height={height}
+        loading="lazy"
+        decoding="async"
+        class="h-48 w-full object-cover grayscale sm:h-56 lg:h-64"
+    />
+    <div class="flex flex-1 flex-col p-5 sm:p-6">
+        <h3 class="text-primary font-primary text-lg font-semibold">
+            {title}
+        </h3>
+        <p class="text-secondary font-primary mt-2 text-sm leading-relaxed">
+            {description}
+        </p>
+        <div class="mt-4 flex flex-wrap gap-2">
+            {tags.map((tag) => <Tag name={tag} />)}
         </div>
         <div
-            class="grid grid-cols-[repeat(auto-fit,_minmax(150px,_1fr))] gap-2 self-end px-6 mb-6"
+            class="mt-auto grid grid-cols-[repeat(auto-fit,_minmax(150px,_1fr))] gap-2 pt-6"
         >
             {
                 web ? (

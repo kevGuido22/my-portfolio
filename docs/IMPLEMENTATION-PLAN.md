@@ -417,32 +417,42 @@ Files:
     - Los 5 componentes anteriores.
 
 Changes:
-    - Grid 12 col: proyectos destacados (microservices, Spotify) en tiles
-      grandes ~7/5; Suru Frontend y Backend en tiles medianos 6/6.
-    - Card/HorizontalCard: Props API INTACTA (title, img, description, tags,
-      web, gitHub); estilos nuevos: hairline borders, sin glow/spans, título
-      con jerarquía editorial, imagen superior con grayscale.
+    - Slide HUD clara espejo de Experience: grid técnico de hairlines, HUD de
+      esquinas (03 / Projects · Selected work / Scroll ↓ · K. Guido) y wordmark
+      PROJECTS (primary 10%) centrado detrás del bento (asoma por los gaps).
+    - Grid 12 col: microservices tile horizontal destacado 7 col (split
+      interno imagen/texto solo en lg); Spotify tile vertical 5 col (Card);
+      Suru Frontend y Backend tiles 6/6 (Card) — decisión SPEC §17 #8.
+    - Card/HorizontalCard: Props API intacta más width/height opcionales
+      (anti-CLS); estilos nuevos: hairline borders, hover border-strong,
+      título con jerarquía editorial, mt-auto para anclar acciones al fondo,
+      imagen grayscale + loading="lazy" + decoding="async".
     - Tag: chip mono con --radius-chip, hairline border, texto secondary.
-    - MainButton: borde 1px hairline, hover invertido (fondo primary, texto
-      background), transición 0.2s; reemplaza relleno violeta.
-    - HorizontalCard: eliminar console.log(tags) y h-min-[50rem] si quedara.
-    - Imágenes de proyectos: grayscale, width/height, loading="lazy".
+    - MainButton: cápsula mono (mismo lenguaje que las pills del hero),
+      borde hairline, hover invertido (fondo primary, texto surface),
+      target="_blank" rel="noopener noreferrer".
+    - WebIcon: permanece de trazo (icono de utilidad vs marcas sólidas);
+      se limpian nodos de espacio sobrantes del JSX (SPEC §17 #8).
+    - HorizontalCard: console.log y h-min ya no existían (verificado).
     - Descripciones existentes intactas.
 
 Dependencies:
-    Fases 1 y 2.
+    Fases 1, 2 y 4 (sistema reveal, slide HUD, SectionHeading tone).
 
 Responsive:
-    - Desktop: bento 12 col (7/5 + 6/6).
-    - Tablet: 2 columnas iguales.
-    - Móvil: 1 columna, tiles apilados.
+    - Desktop: bento 12 col (7/5 + 6/6), tiles de igual altura por fila.
+    - Tablet: 2 columnas iguales; tile destacado apilado (imagen arriba).
+    - Móvil: 1 columna, tiles apilados con imagen arriba.
 
 Acceptance criteria:
-    - Las 4 cards renderizan con la misma API de props (sin cambios de
-      llamada en Projects.astro salvo layout del grid).
+    - Las 4 cards renderizan con la misma API de props (llamadas en
+      Projects.astro solo añaden layout del grid y width/height).
     - Sin console.log; sin clases inválidas.
     - Sin overflow horizontal con 4 cards en 320px.
-    - Tags como chips uniformes; botones operativos (links correctos).
+    - Tags como chips uniformes; botones operativos (links correctos,
+      abren en pestaña nueva con noopener).
+    - Contenido profesional byte-identical (títulos, descripciones, tags,
+      URLs).
 
 Validation:
     pnpm build → PASS; inspección visual del bento en 3 breakpoints.

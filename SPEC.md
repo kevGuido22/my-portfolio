@@ -303,13 +303,23 @@ con las tres técnicas identificadas en las referencias.
 
 ### 8.3 Projects — `03` — fondo claro, Bento Grid protagonista
 
-- Grid de 12 columnas: 2 proyectos destacados en tiles grandes (7/5 columnas),
-  2 proyectos secundarios en tiles medianos (6/6).
-- Cards reutilizadas (`Card`/`HorizontalCard`) con Props API intacta, restiladas:
-  hairline borders, sin `span-1..4` ni glow, títulos con jerarquía editorial.
+- Slide HUD clara espejo de la estructura de Experience: grid técnico de
+  hairlines, HUD de esquinas (`03 / Projects` · `Selected work` arriba,
+  `Scroll ↓` · `K. Guido` abajo) y wordmark `PROJECTS` (primary al 10%,
+  `clamp(4rem, 15vw, 13rem)`) centrado detrás del bento — las cards son
+  superficies opacas, así que el wordmark solo asoma por los gaps del grid.
+- Grid de 12 columnas: tile horizontal destacado (microservices, 7 col,
+  split interno imagen/texto solo en `lg`), tile vertical 5 col (Spotify),
+  2 tiles medianos 6/6 (Suru Frontend/Backend). Tablet: 2 columnas iguales;
+  móvil: 1 columna con la imagen arriba.
+- Cards reutilizadas (`Card`/`HorizontalCard`) con Props API intacta más
+  `width`/`height` opcionales (anti-CLS), restiladas: hairline borders,
+  hover `--color-border-strong`, títulos con jerarquía editorial, imagen
+  `grayscale` + `loading="lazy"` + `decoding="async"`.
 - Tags como chips mono (`--radius-chip`, hairline border, texto secondary).
-- Botones de acción (Website/GitHub) minimal: borde 1px, hover invertido
-  (fondo primary, texto background), sin relleno violeta.
+- Botones de acción (Website/GitHub) como cápsulas mono — mismo lenguaje que
+  las pills del hero: borde hairline, hover invertido (fondo primary, texto
+  surface), `target="_blank" rel="noopener noreferrer"`.
 
 ### 8.4 Skills — `04` — fondo claro, lista índice editorial
 
@@ -485,6 +495,14 @@ explícita.
    Skills, About), adaptada al contenido y función de cada una — sin replicar
    literalmente la composición del hero ni uniformar las secciones (SPEC §6:
    cada sección conserva composición propia).
+8. **Bento de Projects** (Fase 5, 2026-11-11) — microservices conserva el rol
+   destacado (primer proyecto del contenido existente) como tile horizontal de
+   7 col con split interno solo en `lg` (evita columnas estrechas en tablet);
+   Spotify pasa de `HorizontalCard` a `Card` vertical de 5 col. Wordmark
+   `PROJECTS` detrás del bento, visible solo por los gaps. `WebIcon` resuelto:
+   permanece de trazo como icono de utilidad — contraste deliberado con las
+   marcas sólidas (GitHub/LinkedIn/Resume); se limpian los nodos de espacio
+   sobrantes del JSX.
 
 ### Puntos de validación visual (se resuelven en implementación)
 
