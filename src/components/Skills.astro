@@ -1,69 +1,301 @@
 ---
 import SkillCard from "./SkillCard.astro";
+import SectionHeading from "./SectionHeading.astro";
+
+const filterClasses =
+    "rounded-chip border px-4 py-2 font-mono text-xs uppercase tracking-[0.15em] text-secondary transition-colors duration-200 hover:border-primary hover:text-primary aria-pressed:border-primary aria-pressed:bg-primary aria-pressed:text-on-dark";
 ---
 
-<section id="skills" class="mt-36 p-4 md:p-4" >
-    <div class="max-w-screen-lg m-auto gap-2 grid">
-        <h2 class="text-white text-5xl text-center font-primary font-semibold">Skills</h2>
-        <!-- <div
-            class="grid grid-cols-[repeat(auto-fit,_minmax(100px,_1fr))] gap-4 mt-4 justify-items-center"
-        > -->
-            <div
-            class="flex flex-row flex-wrap gap-4 mt-4 w-full justify-center"
+<section
+    id="skills"
+    class="relative flex flex-col gap-4 overflow-hidden px-4 pb-6 pt-16 sm:gap-6 lg:pt-0"
+>
+    <!-- Layer 0: technical grid (hairlines) -->
+    <div
+        aria-hidden="true"
+        class="pointer-events-none absolute inset-0 z-0 flex justify-center px-4"
+    >
+        <div
+            class="grid h-full w-full max-w-screen-lg grid-cols-2 border-x lg:grid-cols-4"
         >
-            <SkillCard
-                title={"HTML"}
-                img={"/images/html-icon.png"}
-            />
-            <SkillCard title={"CSS"} img={"/images/css-icon.png"} />
-            <SkillCard
-                title={"JavaScript"}
-                img={"/images/js-icon.png"}
-            />
-            <SkillCard
-                title={"Typescript"}
-                img={"/images/TS-icon.png"}
-            />
-            <SkillCard
-                title={"React"}
-                img={"/images/react-icon.png"}
-            />
-            <SkillCard
-                title={"SASS"}
-                img={"/images/sass-icon.png"}
-            />
-            
-            
-            <SkillCard
-                title={"TailwindCSS"}
-                img={"/images/tailwindcss-icon.png"}
-            />
-            <SkillCard title={"PHP"} img={"/images/php-icon.png"} />
-            <SkillCard
-                title={"Laravel"}
-                img={"/images/laravel-icon.png"}
-            />
-            <SkillCard
-                title={"MySQL"}
-                img={"/images/sql-icon.png"}
-            />
-            <!-- <SkillCard
-                title={"Figma"}
-                img={"/images/figma-icon.png"}
-            /> -->
-            
-            <SkillCard
-                title={"Java"}
-                img={"/images/Java-icon.png"}
-            />
-            <SkillCard
-                title={"SpringBoot"}
-                img={"/images/SpringBoot-icon.png"}
-            />
-            <SkillCard
-                title={"Docker"}
-                img={"/images/Docker-icon.png"}
-            />
+            <span class="border-r"></span>
+            <span class="hidden border-r lg:block"></span>
+            <span class="hidden border-r lg:block"></span>
+            <span class="hidden lg:block"></span>
         </div>
     </div>
+
+    <!-- Layer 0: typography as background (single word, bleed). The rune
+         tiles are transparent plates at rest, so the wordmark sits behind
+         the collection at 10% opacity. -->
+    <div
+        aria-hidden="true"
+        class="pointer-events-none absolute inset-0 z-0 select-none"
+    >
+        <p
+            class="absolute left-1/2 top-1/2 w-max -translate-x-1/2 -translate-y-1/2 text-center font-primary text-[clamp(4rem,15vw,13rem)] font-bold uppercase leading-[0.9] tracking-wide text-primary opacity-10"
+        >
+            Skills
+        </p>
+    </div>
+
+    <!-- HUD: top corners -->
+    <div
+        aria-hidden="true"
+        class="relative z-20 mx-auto flex w-full max-w-screen-lg items-center justify-between font-mono text-[0.625rem] uppercase tracking-[0.2em] text-secondary"
+        data-reveal
+    >
+        <span>04 / Skills</span>
+        <span class="flex items-center gap-2">
+            <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
+            Runes / 13
+        </span>
+    </div>
+
+    <!-- Vitrina (owns the slide center): the stack as a collection of
+         collectible runes — beveled tiles with a broken border trace,
+         displayed on a centered flex-wrap like a display case. -->
+    <div
+        class="relative z-10 mx-auto flex w-full max-w-screen-lg flex-1 flex-col justify-center pt-8 lg:pt-0"
+    >
+        <div>
+            <SectionHeading index="04" title="Skills" />
+            <ul class="flex flex-wrap justify-center gap-3" data-rune-list data-reveal>
+                <SkillCard
+                    index="01"
+                    title={"HTML"}
+                    img={"/images/html-icon.png"}
+                    cat="frontend"
+                    width={128}
+                    height={129}
+                />
+                <SkillCard
+                    index="02"
+                    title={"CSS"}
+                    img={"/images/css-icon.png"}
+                    cat="frontend"
+                    width={128}
+                    height={129}
+                />
+                <SkillCard
+                    index="03"
+                    title={"JavaScript"}
+                    img={"/images/js-icon.png"}
+                    cat="frontend"
+                    width={128}
+                    height={129}
+                />
+                <SkillCard
+                    index="04"
+                    title={"Typescript"}
+                    img={"/images/TS-icon.png"}
+                    cat="frontend"
+                    width={32}
+                    height={32}
+                />
+                <SkillCard
+                    index="05"
+                    title={"React"}
+                    img={"/images/react-icon.png"}
+                    cat="frontend"
+                    width={128}
+                    height={115}
+                />
+                <SkillCard
+                    index="06"
+                    title={"SASS"}
+                    img={"/images/sass-icon.png"}
+                    cat="frontend"
+                    width={128}
+                    height={97}
+                />
+                <SkillCard
+                    index="07"
+                    title={"TailwindCSS"}
+                    img={"/images/tailwindcss-icon.png"}
+                    cat="frontend"
+                    width={128}
+                    height={78}
+                />
+                <SkillCard
+                    index="08"
+                    title={"PHP"}
+                    img={"/images/php-icon.png"}
+                    cat="backend"
+                    width={128}
+                    height={68}
+                />
+                <SkillCard
+                    index="09"
+                    title={"Laravel"}
+                    img={"/images/laravel-icon.png"}
+                    cat="backend"
+                    width={128}
+                    height={132}
+                />
+                <SkillCard
+                    index="10"
+                    title={"MySQL"}
+                    img={"/images/sql-icon.png"}
+                    cat="backend"
+                    width={128}
+                    height={129}
+                />
+                <!-- <SkillCard
+                    index="11"
+                    title={"Figma"}
+                    img={"/images/figma-icon.png"}
+                    cat="frontend"
+                    width={128}
+                    height={193}
+                /> -->
+                <SkillCard
+                    index="11"
+                    title={"Java"}
+                    img={"/images/Java-icon.png"}
+                    cat="backend"
+                    width={32}
+                    height={44}
+                />
+                <SkillCard
+                    index="12"
+                    title={"SpringBoot"}
+                    img={"/images/SpringBoot-icon.png"}
+                    cat="backend"
+                    width={32}
+                    height={29}
+                />
+                <SkillCard
+                    index="13"
+                    title={"Docker"}
+                    img={"/images/Docker-icon.png"}
+                    cat="backend"
+                    width={32}
+                    height={23}
+                />
+            </ul>
+
+            <!-- Filter: switches the vitrina below it — only the matching
+                 runes stay in the accessibility tree and on screen. -->
+            <div
+                class="mt-8 flex flex-wrap items-center justify-center gap-2.5"
+                role="group"
+                aria-label="Filter skills by area"
+                data-reveal
+            >
+                <button
+                    type="button"
+                    data-filter="all"
+                    aria-pressed="true"
+                    class={filterClasses}
+                >
+                    All
+                </button>
+                <button
+                    type="button"
+                    data-filter="frontend"
+                    aria-pressed="false"
+                    class={filterClasses}
+                >
+                    Frontend
+                </button>
+                <button
+                    type="button"
+                    data-filter="backend"
+                    aria-pressed="false"
+                    class={filterClasses}
+                >
+                    Backend
+                </button>
+                <span
+                    data-rune-count
+                    aria-live="polite"
+                    class="ml-1 font-mono text-[0.625rem] uppercase tracking-[0.2em] text-secondary"
+                >
+                    13 / 13
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- HUD: bottom corners -->
+    <div
+        aria-hidden="true"
+        class="relative z-20 mx-auto flex w-full max-w-screen-lg items-center justify-between font-mono text-[0.625rem] uppercase tracking-[0.2em] text-secondary"
+        data-reveal
+    >
+        <span class="flex items-center gap-2">Scroll <span>↓</span></span>
+        <span>K. Guido</span>
+    </div>
 </section>
+
+<style is:global>
+    /* Runes animate in only once the user has filtered at least once —
+       the section's own [data-reveal] block handles the initial entrance.
+       The [data-rune-list] attribute keys this tightly to the vitrina. */
+    [data-rune-list][data-touched] li:not([hidden]) {
+        animation: rune-in 300ms ease both;
+    }
+
+    @keyframes rune-in {
+        from {
+            opacity: 0;
+            transform: translateY(6px);
+        }
+        to {
+            opacity: 1;
+            transform: none;
+        }
+    }
+</style>
+
+<script>
+    // Rune vitrina filter (SPEC §8.4): vanilla JS, no dependencies.
+    // Buttons carry data-filter + aria-pressed (Tailwind aria-pressed:
+    // variant styles the active one); runes carry data-cat and are hidden
+    // with the native attribute so they leave the accessibility tree.
+    // The readout is a polite live region so the count change is
+    // announced. Reduced motion: the global CSS clamp makes the rune-in
+    // animation instant.
+    const section = document.getElementById("skills");
+    const list = section?.querySelector<HTMLElement>("[data-rune-list]");
+    const count = section?.querySelector<HTMLElement>("[data-rune-count]");
+    const buttons = section
+        ? Array.from(
+              section.querySelectorAll<HTMLButtonElement>("[data-filter]"),
+          )
+        : [];
+
+    if (section && list && count && buttons.length > 0) {
+        const runes = Array.from(
+            list.querySelectorAll<HTMLElement>(":scope > li"),
+        );
+        const total = runes.length;
+
+        const applyFilter = (filter: string) => {
+            let visible = 0;
+            for (const rune of runes) {
+                const show = filter === "all" || rune.dataset.cat === filter;
+                rune.hidden = !show;
+                if (show) visible += 1;
+            }
+            for (const button of buttons) {
+                button.setAttribute(
+                    "aria-pressed",
+                    String(button.dataset.filter === filter),
+                );
+            }
+            count.textContent = `${String(visible).padStart(
+                2,
+                "0",
+            )} / ${String(total).padStart(2, "0")}`;
+        };
+
+        for (const button of buttons) {
+            button.addEventListener("click", () => {
+                list.dataset.touched = "";
+                applyFilter(button.dataset.filter ?? "all");
+            });
+        }
+    }
+</script>

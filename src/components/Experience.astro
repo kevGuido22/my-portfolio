@@ -1,61 +1,135 @@
 ---
-
+import SectionHeading from "./SectionHeading.astro";
 ---
 
-<section class="sp-8 p-6 mt-36 md:mt-0" id="experience">
-    <div class="max-w-screen-lg m-auto gap-2 grid">
+<section
+    id="experience"
+    data-theme="dark"
+    class="relative flex flex-col gap-4 overflow-hidden bg-dark-surface px-4 pb-6 pt-16 sm:gap-6 lg:pt-0"
+>
+    <!-- Layer 0: technical grid (hairlines on dark) -->
+    <div
+        aria-hidden="true"
+        class="pointer-events-none absolute inset-0 z-0 flex justify-center px-4"
+    >
+        <div
+            class="grid h-full w-full max-w-screen-lg grid-cols-2 border-x border-on-dark lg:grid-cols-4"
+        >
+            <span class="border-r border-on-dark"></span>
+            <span class="hidden border-r border-on-dark lg:block"></span>
+            <span class="hidden border-r border-on-dark lg:block"></span>
+            <span class="hidden lg:block"></span>
+        </div>
+    </div>
+
+    <!-- Layer 0: typography as background (single word, bleed) -->
+    <div
+        aria-hidden="true"
+        class="pointer-events-none absolute inset-0 z-0 select-none"
+    >
+        <p
+            class="absolute left-1/2 top-1/2 w-max -translate-x-1/2 -translate-y-1/2 text-center font-primary text-[clamp(4rem,15vw,13rem)] font-bold uppercase leading-[0.9] tracking-wide text-on-dark opacity-[0.08]"
+        >
+            Experience
+        </p>
+    </div>
+
+    <!-- HUD: top corners -->
+    <div
+        aria-hidden="true"
+        class="relative z-20 mx-auto flex w-full max-w-screen-lg items-center justify-between font-mono text-[0.625rem] uppercase tracking-[0.2em] text-on-dark-secondary"
+        data-reveal
+    >
+        <span>02 / Experience</span>
+        <span class="flex items-center gap-2">
+            <span class="h-1.5 w-1.5 rounded-full bg-on-dark"></span>
+            Timeline
+        </span>
+    </div>
+
+    <!-- Timeline (owns the slide center) -->
+    <div
+        class="relative z-10 mx-auto flex w-full max-w-screen-lg flex-1 flex-col justify-center pt-8 lg:pt-0"
+    >
         <div>
-            <h2
-                class="text-white text-5xl text-center font-primary font-semibold"
-            >
-                Experience
-            </h2>
-            <ol
-                class="relative border-s border-gray-200 dark:border-gray-700 mt-6"
-            >
+            <SectionHeading index="02" title="Experience" tone="dark" />
+            <ol class="relative border-s border-on-dark">
+                <!-- data-reveal lives on an inner wrapper: a transforming li
+                     would become the containing block of the absolutely
+                     positioned rail node and displace it during the reveal. -->
                 <li class="mb-10 ms-6">
                     <span
-                        class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-white"
+                        class="absolute -start-1 mt-1 h-2 w-2 rounded-full bg-on-dark ring-4 ring-dark-surface"
+                        aria-hidden="true"
                     >
                     </span>
-                    <h3
-                        class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white"
-                    >
-                        Centauro Solutions
-                    </h3>
-                    <time
-                        class="block mb-2 text-md font-normal leading-none text-gray-300 dark:text-gray-500"
-                        >(3 months) September 2025 – November 2025
-                    </time>
-                    <p class="mb-4 text-base font-normal text-gray-300">
-                        At Centauro Solutions, I worked as a Frontend Developer Intern. My
-                        main task was to improve the platform’s responsive
-                        design to provide a better UX/UI for clients. I also
-                        worked with the SCRUM methodology and used Git Flow for
-                        version control, including releases, hotfixes, and code
-                        reviews.
-                    </p>
+                    <div data-reveal>
+                        <span
+                            class="mb-1 block font-mono text-xs uppercase tracking-[0.15em] text-on-dark-secondary"
+                        >
+                            Frontend Developer Intern
+                        </span>
+                        <h3
+                            class="flex items-center mb-1 text-lg font-semibold text-on-dark"
+                        >
+                            Centauro Solutions
+                        </h3>
+                        <time
+                            class="block mb-2 text-base font-normal leading-none text-on-dark-secondary"
+                            >(3 months) September 2025 – November 2025
+                        </time>
+                        <p
+                            class="mb-4 text-base font-normal text-on-dark-secondary"
+                        >
+                            At Centauro Solutions, I worked as a Frontend Developer Intern. My
+                            main task was to improve the platform’s responsive
+                            design to provide a better UX/UI for clients. I also
+                            worked with the SCRUM methodology and used Git Flow for
+                            version control, including releases, hotfixes, and code
+                            reviews.
+                        </p>
+                    </div>
                 </li>
                 <li class="mb-10 ms-6">
                     <span
-                        class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-white"
+                        class="absolute -start-1 mt-1 h-2 w-2 rounded-full bg-on-dark ring-4 ring-dark-surface"
+                        aria-hidden="true"
                     >
                     </span>
-                    <h3
-                        class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white"
-                    >
-                        Universidad de Costa Rica's Research and Development
-                        (R&D) team
-                    </h3>
-                    <time
-                        class="block mb-2 text-md font-normal leading-none text-gray-300 dark:text-gray-500"
-                        >1+ year (ongoing)</time
-                    >
-                    <p class="mb-4 text-base font-normal text-gray-300">
-                        In the R&D team, I work as a Full Stack Developer using technologies such as Laravel and React. We also use the SCRUM methodology, manage version control with GitHub, and work with Docker containers. We develop functional projects for the University of Costa Rica (UCR). Additionally, I work with CMS platforms like WordPress to manage the UCR website.
-                    </p>
+                    <div data-reveal>
+                        <span
+                            class="mb-1 block font-mono text-xs uppercase tracking-[0.15em] text-on-dark-secondary"
+                        >
+                            Full Stack Developer
+                        </span>
+                        <h3
+                            class="flex items-center mb-1 text-lg font-semibold text-on-dark"
+                        >
+                            Universidad de Costa Rica's Research and Development
+                            (R&D) team
+                        </h3>
+                        <time
+                            class="block mb-2 text-base font-normal leading-none text-on-dark-secondary"
+                            >1+ year (ongoing)</time
+                        >
+                        <p
+                            class="mb-4 text-base font-normal text-on-dark-secondary"
+                        >
+                            In the R&D team, I work as a Full Stack Developer using technologies such as Laravel and React. We also use the SCRUM methodology, manage version control with GitHub, and work with Docker containers. We develop functional projects for the University of Costa Rica (UCR). Additionally, I work with CMS platforms like WordPress to manage the UCR website.
+                        </p>
+                    </div>
                 </li>
             </ol>
         </div>
+    </div>
+
+    <!-- HUD: bottom corners -->
+    <div
+        aria-hidden="true"
+        class="relative z-20 mx-auto flex w-full max-w-screen-lg items-center justify-between font-mono text-[0.625rem] uppercase tracking-[0.2em] text-on-dark-secondary"
+        data-reveal
+    >
+        <span class="flex items-center gap-2">Scroll <span>↓</span></span>
+        <span>K. Guido</span>
     </div>
 </section>

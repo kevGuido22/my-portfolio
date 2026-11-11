@@ -11,37 +11,42 @@ interface Props {
     tags: Array<string>;
     web?: string;
     gitHub?: string;
+    width?: number;
+    height?: number;
 }
 
-const { title, img, description, tags, web, gitHub } = Astro.props;
-
-console.log(tags);
+const { title, img, description, tags, web, gitHub, width, height } = Astro.props;
 ---
 
+<!-- Featured bento tile: stacked (image over text) below lg, side-by-side
+     (text 3fr / image 2fr) from lg up — the internal split only exists where
+     the 7-column tile is wide enough for two comfortable columns. -->
 <div
-    class="card-box-shadow grid sm:grid-cols-2 rounded-lg overflow-hidden w-full mt-4 h-min-[50rem] relative bg-white/5 backdrop-blur-md backdrop-filter hover:shadow-xl transition-all duration-300 ease-in-out"
+    class="flex h-full flex-col overflow-hidden rounded-card border bg-surface transition-colors duration-300 hover:border-strong lg:grid lg:grid-cols-[3fr_2fr]"
 >
-    <div class="sm:order-2">
+    <div class="order-1 lg:order-2">
         <img
             src={img}
-            alt=""
-            class=" h-full object-cover object-left"
+            alt={`Screenshot of the ${title} project`}
+            width={width}
+            height={height}
+            loading="lazy"
+            decoding="async"
+            class="h-full w-full object-cover object-left grayscale"
         />
     </div>
-    <div class="p-6 order-1 gap-2 flex flex-col">
-        <h3 class="text-white font-primary text-xl font-bold">
+    <div class="order-2 flex flex-col p-5 sm:p-6 lg:order-1">
+        <h3 class="text-primary font-primary text-xl font-semibold">
             {title}
         </h3>
-        <p class="text-gray-300 font-primary">
+        <p class="text-secondary font-primary mt-2 text-sm leading-relaxed">
             {description}
         </p>
-        <div class="flex flex-grow items-end">
-            <div class="mt-4 items-center flex gap-2 flex-wrap">
-                {tags.map((tag) => <Tag name={tag} />)}
-            </div>
+        <div class="mt-4 flex flex-wrap gap-2">
+            {tags.map((tag) => <Tag name={tag} />)}
         </div>
         <div
-            class="grid grid-cols-[repeat(auto-fit,_minmax(150px,_1fr))] gap-2 mt-4"
+            class="mt-auto grid grid-cols-[repeat(auto-fit,_minmax(150px,_1fr))] gap-2 pt-6"
         >
             {
                 web ? (
@@ -59,9 +64,4 @@ console.log(tags);
             }
         </div>
     </div>
-    <!-- <span class="border-span-top"></span> -->
-    <span class="span-1"></span>
-    <span class="span-2"></span>
-    <span class="span-3"></span>
-    <span class="span-4"></span>
 </div>

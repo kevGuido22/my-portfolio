@@ -1,17 +1,111 @@
 ---
-interface Props{
-    img: string,
-    title: string
+interface Props {
+    img: string;
+    title: string;
+    index: string;
+    cat: "frontend" | "backend";
+    width?: number;
+    height?: number;
 }
 
-const { img, title } = Astro.props;
+const { img, title, index, cat, width, height } = Astro.props;
 
+const tag = cat === "frontend" ? "FE" : "BE";
 ---
 
-<div
-    class="card-skill w-28 flex flex-col justify-center items-center gap-2 p-4 rounded-md bg-black/10 bg-clip-padding backdrop-blur-md backdrop-filter border border-gray-100/40 border-t-gray-50/5"
->
-    <img src={img} alt={`${title}-image`} class="h-10 aspect-square object-contain">
-    <p class="text-white">{title}</p>
-     <div class="shine"></div>
-</div>
+<!-- Collectible rune tile. The li carries no display utility so the
+     filter script can hide it with the native `hidden` attribute. -->
+<li data-cat={cat} class="w-[calc(50%_-_6px)] sm:w-32">
+    <div class="rune-card">
+        <div
+            class="flex w-full items-center justify-between font-mono text-[0.625rem] uppercase tracking-[0.15em]"
+        >
+            <span class="rune-serial">{index}</span>
+            <span class="rune-tag">{tag}</span>
+        </div>
+        <!-- Decorative glyph: the name is adjacent visible text -->
+        <img
+            src={img}
+            alt=""
+            width={width}
+            height={height}
+            loading="lazy"
+            decoding="async"
+            class="rune-glyph h-11 w-11 flex-none object-contain grayscale"
+        />
+        <p class="rune-name font-primary text-center text-sm font-medium">
+            {title}
+        </p>
+    </div>
+</li>
+
+<style>
+    /* Rune frame: a broken trace at rest (two corner brackets + a beveled
+       corner). On hover the visible brackets extend and darken to primary —
+       the frame "targets" the rune; the glyph itself never changes (user
+       feedback: brand marks read better untouched). */
+    .rune-card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        aspect-ratio: 5 / 6;
+        padding: 0.875rem 0.625rem 0.75rem;
+        border: 1px solid transparent;
+        clip-path: polygon(
+            0 0,
+            calc(100% - 0.875rem) 0,
+            100% 0.875rem,
+            100% 100%,
+            0 100%
+        );
+    }
+
+    /* Partial trace: brackets on opposite corners. The beveled corner
+       never gets one — the rune keeps a deliberate gap in its outline. */
+    .rune-card::before,
+    .rune-card::after {
+        content: "";
+        position: absolute;
+        width: 1.25rem;
+        height: 1.25rem;
+        pointer-events: none;
+        transition:
+            width 220ms ease,
+            height 220ms ease,
+            border-color 220ms ease;
+    }
+    .rune-card::before {
+        top: 0;
+        left: 0;
+        border-top: 1px solid var(--color-secondary);
+        border-left: 1px solid var(--color-secondary);
+    }
+    .rune-card::after {
+        right: 0;
+        bottom: 0;
+        border-right: 1px solid var(--color-secondary);
+        border-bottom: 1px solid var(--color-secondary);
+    }
+
+    .rune-name {
+        color: var(--color-text-primary);
+    }
+    .rune-serial,
+    .rune-tag {
+        color: var(--color-secondary);
+    }
+    .rune-glyph {
+        filter: grayscale(1);
+    }
+
+    /* Activation: the visible corner brackets extend and darken — the
+       plate and glyph stay exactly as they are at rest. */
+    .rune-card:hover::before,
+    .rune-card:hover::after {
+        width: 1.75rem;
+        height: 1.75rem;
+        border-color: var(--color-primary);
+    }
+</style>

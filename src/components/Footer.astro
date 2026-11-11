@@ -1,3 +1,26 @@
-<footer class="px-8 py-14 mt-24  border-t border-t-gray-100/20">
-    <p class="text-white text-center">@2025 Kevin Guido Urbina</p>
+<!-- Closing row: the document's colophon, not a slide. Deliberately no
+     data-reveal — the reveal script only observes section[id] targets, so
+     a footer reveal would never fire and would stay hidden with JS on. -->
+<footer class="border-t px-4 py-8">
+    <div
+        class="mx-auto flex w-full max-w-screen-lg flex-col items-center justify-between gap-3 sm:flex-row"
+    >
+        <span
+            class="hidden font-mono text-xs uppercase tracking-[0.2em] text-secondary sm:block"
+        >
+            K. Guido
+        </span>
+        <!-- Copyright kept verbatim (no uppercase transform, no rewording) -->
+        <p class="font-mono text-xs tracking-[0.15em] text-secondary">
+            @2026 Kevin Guido Urbina
+        </p>
+        <a
+            href="/CV-KevinGuidoUrbina.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-secondary transition-colors duration-200 hover:text-primary"
+        >
+            Resume <span aria-hidden="true">↗</span>
+        </a>
+    </div>
 </footer>

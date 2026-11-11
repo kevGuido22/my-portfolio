@@ -1,0 +1,201 @@
+/* ============================================================
+   Design tokens — single source of truth (SPEC.md §4)
+   Do not hardcode color values outside this file.
+   ============================================================ */
+:root {
+    /* Identity */
+    --color-background: #E3E3E4;
+    --color-surface: #FFFFFF;
+    --color-primary: #030303;
+    --color-secondary: #494949;
+    --color-dark-surface: #323232;
+
+    /* Semantic */
+    --color-text-primary: var(--color-primary);
+    --color-text-secondary: var(--color-secondary);
+    --color-text-on-dark: var(--color-surface);
+    --color-text-on-dark-secondary: #C8C8C8;
+    --color-border: rgba(3, 3, 3, 0.12);
+    --color-border-on-dark: rgba(255, 255, 255, 0.16);
+    --color-border-strong: rgba(3, 3, 3, 0.32);
+
+    /* Shape */
+    --radius-card: 4px;
+    --radius-chip: 999px;
+
+    /* Layout */
+    --container-max: 72rem;
+    --section-min-height: 100svh;
+    --navbar-height: 4rem;
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+}
+
+/* Offset anchored sections below the fixed top navigation (navbar visible >=640px) */
+@media (min-width: 640px) {
+    section[id] {
+        scroll-margin-top: var(--navbar-height);
+    }
+}
+
+/* Presentation slides on large screens:
+   each snapped section fills the viewport exactly below the fixed navbar.
+   scroll-margin outsets the snap area, so snap points land with the section
+   top right below the navbar, and the 64px "leak" of the previous section
+   stays hidden behind the opaque navbar. */
+@media (min-width: 1024px) {
+    section[id] {
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+        min-height: calc(var(--section-min-height) - var(--navbar-height));
+    }
+
+    /* First slide: its snap point clamps to the document start, so it needs
+       full viewport height to keep the next section out of view. */
+    section#home {
+        min-height: var(--section-min-height);
+    }
+
+    /* The trailing footer is not a slide: aligning its end to the document
+       end keeps it reachable — mandatory snapping would otherwise block the
+       last stretch of scroll with the footer never fully visible. */
+    footer {
+        scroll-snap-align: end;
+        scroll-snap-stop: always;
+    }
+}
+
+/* Snap only on large screens, and never with reduced motion */
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-snap-type: y mandatory;
+    }
+}
+
+/* ============================================================
+   Mobile menu overlay (SideBar.jsx / BtnMenu.jsx)
+   Dark editorial slide over the whole viewport. Opens with a
+   clip-path wipe from the right edge (where the toggle sits),
+   links enter staggered. z-40 keeps it above page content
+   (sections are positioned and would otherwise paint over it);
+   the toggle stays at z-50. Reduced motion: instant open/close.
+   ============================================================ */
+.mobile-menu {
+    clip-path: inset(0 0 0 100%);
+    visibility: hidden;
+}
+
+.mobile-menu[data-open="true"] {
+    clip-path: inset(0);
+    visibility: visible;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .mobile-menu {
+        transition:
+            clip-path 320ms cubic-bezier(0.32, 0.72, 0, 1),
+            visibility 0s linear 320ms;
+    }
+
+    .mobile-menu[data-open="true"] {
+        transition:
+            clip-path 320ms cubic-bezier(0.32, 0.72, 0, 1),
+            visibility 0s;
+    }
+
+    .mobile-menu[data-open="true"] .mobile-menu-item {
+        animation: mobile-menu-item-in 420ms cubic-bezier(0.32, 0.72, 0, 1)
+            both;
+    }
+
+    .mobile-menu[data-open="true"] .mobile-menu-item:nth-child(1) {
+        animation-delay: 60ms;
+    }
+
+    .mobile-menu[data-open="true"] .mobile-menu-item:nth-child(2) {
+        animation-delay: 110ms;
+    }
+
+    .mobile-menu[data-open="true"] .mobile-menu-item:nth-child(3) {
+        animation-delay: 160ms;
+    }
+
+    .mobile-menu[data-open="true"] .mobile-menu-item:nth-child(4) {
+        animation-delay: 210ms;
+    }
+
+    .mobile-menu[data-open="true"] .mobile-menu-item:nth-child(5) {
+        animation-delay: 260ms;
+    }
+}
+
+@keyframes mobile-menu-item-in {
+    from {
+        opacity: 0;
+        transform: translateY(0.75rem);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* ============================================================
+   Section content reveal (scroll-driven)
+   Sections animate their content in when they occupy the viewport
+   and out when they leave — same easing language as the mobile
+   menu. The hidden state only exists while JS is available
+   (html.js-reveal is set synchronously in <head>), so content is
+   always visible without scripting. Stagger per group via
+   --reveal-delay, assigned in the page script.
+   ============================================================ */
+[data-reveal] {
+    transition:
+        opacity 420ms cubic-bezier(0.32, 0.72, 0, 1),
+        transform 420ms cubic-bezier(0.32, 0.72, 0, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+}
+
+html.js-reveal [data-reveal]:not(.is-revealed) {
+    opacity: 0;
+    transform: translateY(0.75rem);
+}
+
+::selection {
+    background: var(--color-primary);
+    color: var(--color-surface);
+}
+
+:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+}
+
+/* ============================================================
+   Reduced motion (SPEC.md §10)
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        transition-delay: 0s !important;
+    }
+}
