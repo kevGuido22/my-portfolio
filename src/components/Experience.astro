@@ -57,6 +57,43 @@ import SectionHeading from "./SectionHeading.astro";
                 <!-- data-reveal lives on an inner wrapper: a transforming li
                      would become the containing block of the absolutely
                      positioned rail node and displace it during the reveal. -->
+
+
+                <li class="mb-10 ms-6">
+                    <span
+                        class="absolute -start-1 mt-1 h-2 w-2 rounded-full bg-on-dark ring-4 ring-dark-surface"
+                        aria-hidden="true"
+                    >
+                    </span>
+                    <div data-reveal>
+                        <span
+                            class="mb-1 block font-mono text-xs uppercase tracking-[0.15em] text-on-dark-secondary"
+                        >
+                            Full Stack Developer
+                        </span>
+                        <h3
+                            class="flex items-center mb-1 text-lg font-semibold text-on-dark"
+                        >
+                            Universidad de Costa Rica (UCR) — Research & Development Team
+                        </h3>
+                        <time
+                            class="block mb-2 text-base font-normal leading-none text-on-dark-secondary"
+                            >2 year </time
+                        >
+                        <p
+                            class="mb-4 text-base font-normal text-on-dark-secondary"
+                        >
+                            Working as a Full Stack Developer, building and maintaining production web applications for the University of Costa Rica. Involved in both frontend and backend development, focusing on scalable solutions, application performance, and software quality.
+
+                            <ul class="text-on-dark-secondary">
+                                <li>- Developed and maintained web applications using React, TypeScript, Tailwind CSS, Java, and Spring Boot.</li>
+                                <li>- Designed and developed RESTful APIs for seamless communication between frontend and backend services.</li>
+                                <li>- Collaborated with cross-functional teams to gather requirements, design solutions, and deliver high-quality software.</li>
+                            </ul>
+                        </p>
+                    </div>
+                </li>
+
                 <li class="mb-10 ms-6">
                     <span
                         class="absolute -start-1 mt-1 h-2 w-2 rounded-full bg-on-dark ring-4 ring-dark-surface"
@@ -76,49 +113,22 @@ import SectionHeading from "./SectionHeading.astro";
                         </h3>
                         <time
                             class="block mb-2 text-base font-normal leading-none text-on-dark-secondary"
-                            >(3 months) September 2025 – November 2025
+                            >3 months
                         </time>
                         <p
                             class="mb-4 text-base font-normal text-on-dark-secondary"
                         >
-                            At Centauro Solutions, I worked as a Frontend Developer Intern. My
-                            main task was to improve the platform’s responsive
-                            design to provide a better UX/UI for clients. I also
-                            worked with the SCRUM methodology and used Git Flow for
-                            version control, including releases, hotfixes, and code
-                            reviews.
+                            Contributed to frontend development, focusing on responsive design, reusable components, and improving the user experience across web applications.
+                            <ul class="text-on-dark-secondary">
+                                <li>- Developed responsive interfaces and reusable components using React, Next.js, JavaScript, and Tailwind CSS.</li>
+                                <li>- Improved UI responsiveness and usability across different screen sizes and devices.</li>
+                                <li>- Collaborated with designers and developers in a Scrum-based team.</li>
+                            </ul>
                         </p>
                     </div>
                 </li>
-                <li class="mb-10 ms-6">
-                    <span
-                        class="absolute -start-1 mt-1 h-2 w-2 rounded-full bg-on-dark ring-4 ring-dark-surface"
-                        aria-hidden="true"
-                    >
-                    </span>
-                    <div data-reveal>
-                        <span
-                            class="mb-1 block font-mono text-xs uppercase tracking-[0.15em] text-on-dark-secondary"
-                        >
-                            Full Stack Developer
-                        </span>
-                        <h3
-                            class="flex items-center mb-1 text-lg font-semibold text-on-dark"
-                        >
-                            Universidad de Costa Rica's Research and Development
-                            (R&D) team
-                        </h3>
-                        <time
-                            class="block mb-2 text-base font-normal leading-none text-on-dark-secondary"
-                            >1+ year (ongoing)</time
-                        >
-                        <p
-                            class="mb-4 text-base font-normal text-on-dark-secondary"
-                        >
-                            In the R&D team, I work as a Full Stack Developer using technologies such as Laravel and React. We also use the SCRUM methodology, manage version control with GitHub, and work with Docker containers. We develop functional projects for the University of Costa Rica (UCR). Additionally, I work with CMS platforms like WordPress to manage the UCR website.
-                        </p>
-                    </div>
-                </li>
+
+                
             </ol>
         </div>
     </div>
