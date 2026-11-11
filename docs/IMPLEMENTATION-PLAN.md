@@ -263,49 +263,62 @@ SPEC §7 y §10:
 
 ```text
 Phase:
-    Fase 3 — Hero editorial
+    Fase 3 — Hero futurista en capas (dirección revisada por el usuario)
 
 Objective:
-    Composición editorial del hero según SPEC §8.1: split asimétrico, label
-    técnico mono, display headline con clamp, links monocromos y foto en
-    tarjeta hairline.
+    Composición futurista "fluida e integrada" según SPEC §8.1 (revisado):
+    solapamiento de capas, tipografía gigante como fondo, cutout del sujeto y
+    micro-elementos HUD. Sustituye el split editorial inicial.
 
 Components:
     - src/components/Header.astro
+    - src/icons/icons.jsx (normalización de GithubIcon)
 
 Files:
-    - Header.astro (único)
+    - Header.astro
+    - icons.jsx
+    - Projects.astro (fix de overflow preexistente detectado en la validación)
 
 Changes:
-    - Grid 2 columnas asimétrico: texto izquierda, foto derecha (espejo del
-      About actual).
-    - Label técnico "SOFTWARE DEVELOPER" en mono uppercase tracking amplio.
-    - Nombre completo como display headline: clamp(2.75rem, 8vw, 6.5rem),
-      weight 700, line-height ≤1.05.
-    - Links GitHub/LinkedIn/Resume: iconos currentColor + hover subrayado;
-      typo "LinkdIn" → "LinkedIn" si quedara.
-    - Foto: escala de grises (filter), width/height explícitos anti-CLS,
-      fetchpriority="high", alt descriptivo real (no ""), tarjeta con
-      hairline border.
-    - Estado actual de la sección (id="home" implícito en top) coherente con
-      el indicador de Fase 2.
+    - Capa 0: grid técnico de hairlines (2 columnas móvil, 4 desktop) y
+      tipografía "SOFTWARE DEVELOPER" gigante (clamp 3.5rem–10rem, opacity
+      10%) con bleed recortado por overflow-hidden.
+    - Capa 1: cutout Profile.png (720×1280, alpha) en grises, apoyado en la
+      línea de base y solapado con la columna de texto (self-end, -ml).
+    - Capa 2: nombre como display headline (clamp 2.75rem–6.5rem), z-20,
+      con margen negativo (sm:-mr-16) que lo cruza por delante del cutout.
+    - HUD decorativo aria-hidden: "01 / HERO" · "SYSTEM.ONLINE" arriba;
+      "SCROLL ↓" · "K. GUIDO" abajo; mono 10px uppercase tracking amplio.
+    - Links GitHub/LinkedIn/Resume como pills hairline (rounded-chip, mono
+      uppercase, icono 16px) con inversión en hover (bg primary / texto
+      on-dark). rel="noopener noreferrer" en los tres.
+    - Foto: width/height explícitos, fetchpriority="high", alt descriptivo,
+      grayscale vía CSS.
+    - GithubIcon: de trazo fino a marca sólida (unifica el set social).
+    - Projects.astro: minmax(350px, 1fr) → minmax(min(350px, 100%), 1fr)
+      para eliminar overflow horizontal < 382px (bug preexistente).
 
 Dependencies:
     Fase 1 (tokens) y Fase 2 (estructura de sección).
 
 Responsive:
-    - Desktop: split 2 col con foto derecha.
-    - Tablet: 2 col o stack según inspección (foto tras el texto).
-    - Móvil: stack vertical, headline con clamp, foto full-width del contenedor.
+    - Desktop/tablet (≥640px): split con solapamiento nombre-cutout; cutout
+      alineado a la base de la diapositiva.
+    - Móvil (<640px): stack en flujo (nombre → pills → cutout centrado
+      max-w 13rem); sin solapamiento para preservar legibilidad.
+    - Sin overflow horizontal en 320px (verificado con CDP).
 
 Acceptance criteria:
-    - Headline no desborda en 320px (sin overflow horizontal).
-    - Foto en escala de grises con dimensiones explícitas.
-    - Focus visible en los 3 links; target/_blank con rel donde aplique.
+    - Headline no desborda en 320px; scrollWidth == clientWidth.
+    - Cutout en escala de grises con dimensiones explícitas y sin CLS.
+    - Focus visible en los 3 links; target="_blank" con rel.
+    - HUD decorativo no interfiere con lectores de pantalla (aria-hidden).
     - GA intacto; sin JS adicional.
 
 Validation:
-    pnpm build → PASS; inspección visual desktop/tablet/mobile.
+    pnpm build → PASS; pnpm exec astro check → 0 errores; batería CDP
+    (320/375/768/1024/1440: overflow, solapamiento, hover, snap, menú,
+    reveal, reduced-motion); inspección visual desktop/tablet/mobile.
 ```
 
 ---

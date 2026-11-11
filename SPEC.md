@@ -243,14 +243,38 @@ con el indicador de diapositivas + título grande. Refuerza la lectura de
 Orden y set actuales (decisión del usuario): **Home → Experience → Projects →
 Skills → About Me** + Footer. Idioma: **inglés**. Sin contenido nuevo.
 
-### 8.1 Home / Hero — `01` — fondo claro
+### 8.1 Home / Hero — `01` — fondo claro, composición futurista en capas
 
-- Split editorial: columna izquierda con label técnico (`SOFTWARE DEVELOPER` en
-  mono uppercase), nombre completo como display headline, fila de links
-  (GitHub / LinkedIn / Resume) con iconos monocromos y hover de subrayado.
-- Columna derecha: foto de perfil en tarjeta con hairline border, escala de
-  grises (§9).
-- Altura completa; composición asimétrica intencional.
+Dirección revisada por el usuario (2026-11-10, sustituye el split editorial
+inicial): hero futurista "fluido e integrado" por apilamiento de capas,
+con las tres técnicas identificadas en las referencias.
+
+- **Capa 0 — grid técnico:** hairlines verticales 1px (borde del contenedor +
+  divisiones internas; 2 columnas en móvil, 4 en desktop) como retícula técnica
+  sutil.
+- **Capa 0 — tipografía de fondo:** "SOFTWARE DEVELOPER" gigante en uppercase
+  (`clamp(3.5rem, 12vw, 10rem)`), opacity ~10%, sin wrap — desborda y se
+  recorta en los bordes de la sección (bleed intencional, nunca scroll
+  horizontal: `overflow-hidden`).
+- **Capa 1 — retrato cutout:** PNG con transparencia (`public/images/Profile.png`,
+  720×1280, sujeto apoyado en el borde inferior y zona transparente superior).
+  Escala de grises, se apoya en la línea de base de la diapositiva y se solapa
+  con la columna de texto (`-ml`, `self-end`); la tipografía de fondo se ve a
+  través de la zona transparente del recorte.
+- **Capa 2 — primer plano:** nombre en display headline
+  (`clamp(2.75rem, 8vw, 6.5rem)`, weight 700, line-height ≤1.05) con margen
+  negativo hacia la columna del retrato para cruzarse por delante del cutout
+  (z-20 sobre z-10).
+- **Micro-elementos HUD (aria-hidden, decorativos):** fila superior mono
+  (`01 / HERO` · `SYSTEM.ONLINE` con dot) y fila inferior (`SCROLL ↓` ·
+  `K. GUIDO`), 10px uppercase tracking amplio, color secondary.
+- **Links como cápsulas:** GitHub / LinkedIn / Resume en pills hairline
+  (`rounded-chip`, mono uppercase, icono 16px) con inversión en hover
+  (fondo primary, texto on-dark).
+- Altura completa; responsive: móvil apila en flujo (nombre → pills → retrato
+  centrado, máxima legibilidad); solapamiento texto-retrato solo ≥640px.
+- Iconos de marca sólidos y monocromos (`GithubIcon` normalizado a la marca
+  sólida — reuso del SVG del hero; alinea con LinkedIn/Resume en menú y hero).
 
 ### 8.2 Experience — `02` — **sección oscura** (momento de contraste)
 
@@ -426,6 +450,21 @@ explícita.
 3. **Housekeeping git** — aprobado (2026-11-10): pnpm como gestor único,
    `package-lock.json` eliminado del repo y bloqueado en `.gitignore`;
    `pnpm-lock.yaml`, `pnpm-workspace.yaml`, `AGENTS.md` y `SPEC.md` versionados.
+4. **Orden móvil del hero** — texto primero (label → headline → links), foto
+   después a ancho completo (Fase 3): la jerarquía editorial manda en móvil; el
+   orden anterior (foto circular primero) pertenecía a la composición previa.
+5. **`GithubIcon` normalizado** (Fase 3): de trazo fino a marca sólida — misma
+   marca que ya usaba el hero inline. Unifica el set de iconos sociales
+   (GitHub/LinkedIn/Resume sólidos) en menú móvil, hero y cards de proyectos;
+   resuelve el mismatch anotado en la Fase 2. `WebIcon` (utilidad) permanece de
+   trazo; se revisa en Fase 5.
+6. **Hero: dirección futurista en capas** (usuario, 2026-11-10) — sustituye el
+   split editorial de la Fase 3. Técnicas tomadas de las referencias:
+   solapamiento, tipografía como fondo y cutout del sujeto, más micro-elementos
+   HUD (grid técnico de hairlines, labels mono de esquina, links en cápsulas).
+   Asset nuevo: `public/images/Profile.png` (cutout con transparencia, aportado
+   por el usuario). `Profile.png` sustituye a `profile.webp` en el hero;
+   `profile.webp` se conserva en el repo hasta decidir si se usa en About Me.
 
 ### Puntos de validación visual (se resuelven en implementación)
 
