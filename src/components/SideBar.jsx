@@ -67,7 +67,7 @@ export function SideBar() {
             {/* Contact row — mono labels, hairline top, centered */}
             <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 border-t border-on-dark px-7 py-6 pb-[max(1.5rem,env(safe-area-inset-bottom))]">
                 <a
-                    href="/CV.pdf"
+                    href="/CV-KevinGuidoUrbina.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.15em] text-on-dark-secondary transition-colors duration-200 hover:text-on-dark"

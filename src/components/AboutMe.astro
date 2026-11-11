@@ -4,31 +4,101 @@ import SectionHeading from "./SectionHeading.astro";
 
 <section
     id="aboutme"
-    class="px-4 py-16 lg:py-0 lg:flex lg:flex-col lg:justify-center"
+    class="relative flex flex-col gap-4 overflow-hidden px-4 pb-6 pt-16 sm:gap-6 lg:pt-0"
 >
-    <div class="max-w-screen-lg m-auto w-full">
-        <SectionHeading index="05" title="About Me" />
-        <div class="grid gap-6 sm:gap-0 sm:grid-cols-2 mt-8 items-center">
-            <img
-                src="/images/img3.jpg"
-                alt="image-profile"
-                class="aspect-square w-72 object-cover rounded-lg border m-auto object-center"
-                data-reveal
-            />
-            <div class="flex flex-col gap-4" data-reveal>
-                <p class="text-primary">
-                    Hi! I'm Kevin Guido, a software developer from Costa Rica. I’m a
-                    person who is committed to quality and continuous improvement. I
-                    enjoy both frontend and backend development and I take on the
-                    challenges they bring, always looking for useful solutions that
-                    make a difference.
-                </p>
-                <p class="text-primary">
-                    I consider myself self-taught and, as a professional, I always
-                    give my best. I enjoy learning new things and constantly growing
-                    in the world of software development.
-                </p>
+    <!-- Layer 0: technical grid (hairlines) -->
+    <div
+        aria-hidden="true"
+        class="pointer-events-none absolute inset-0 z-0 flex justify-center px-4"
+    >
+        <div
+            class="grid h-full w-full max-w-screen-lg grid-cols-2 border-x lg:grid-cols-4"
+        >
+            <span class="border-r"></span>
+            <span class="hidden border-r lg:block"></span>
+            <span class="hidden border-r lg:block"></span>
+            <span class="hidden lg:block"></span>
+        </div>
+    </div>
+
+    <!-- Layer 0: typography as background (single word, bleed) -->
+    <div
+        aria-hidden="true"
+        class="pointer-events-none absolute inset-0 z-0 select-none"
+    >
+        <p
+            class="absolute left-1/2 top-1/2 w-max -translate-x-1/2 -translate-y-1/2 text-center font-primary text-[clamp(4rem,15vw,13rem)] font-bold uppercase leading-[0.9] tracking-wide text-primary opacity-10"
+        >
+            About
+        </p>
+    </div>
+
+    <!-- HUD: top corners -->
+    <div
+        aria-hidden="true"
+        class="relative z-20 mx-auto flex w-full max-w-screen-lg items-center justify-between font-mono text-[0.625rem] uppercase tracking-[0.2em] text-secondary"
+        data-reveal
+    >
+        <span>05 / About Me</span>
+        <span class="flex items-center gap-2">
+            <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
+            Profile
+        </span>
+    </div>
+
+    <!-- Split editorial mirrored from the hero: photo left, text right.
+         Below sm it stacks photo-first with natural scrolling. -->
+    <div
+        class="relative z-10 mx-auto flex w-full max-w-screen-lg flex-1 flex-col justify-center pt-8 lg:pt-0"
+    >
+        <div>
+            <SectionHeading index="05" title="About Me" />
+            <div
+                class="grid items-center gap-8 sm:grid-cols-[2fr_3fr] sm:gap-10 lg:gap-12"
+            >
+                <!-- Photo: grayscale, hairline frame, real intrinsic dims -->
+                <img
+                    src="/images/img3.jpg"
+                    alt="Profile image of Kevin Guido"
+                    width={960}
+                    height={913}
+                    loading="lazy"
+                    decoding="async"
+                    class="aspect-square w-64 justify-self-center rounded-card border object-cover object-center grayscale sm:w-72 sm:justify-self-start"
+                    data-reveal
+                />
+                <div class="flex flex-col gap-4" data-reveal>
+                    <!-- Technical eyebrow derived from the paragraph itself
+                         ("a software developer from Costa Rica") -->
+                    <p
+                        class="font-mono text-[0.625rem] uppercase tracking-[0.2em] text-secondary"
+                    >
+                        Software Developer — Costa Rica
+                    </p>
+                    <p class="max-w-prose text-primary">
+                        Hi! I'm Kevin Guido, a software developer from Costa Rica. I’m a
+                        person who is committed to quality and continuous improvement. I
+                        enjoy both frontend and backend development and I take on the
+                        challenges they bring, always looking for useful solutions that
+                        make a difference.
+                    </p>
+                    <p class="max-w-prose text-primary">
+                        I consider myself self-taught and, as a professional, I always
+                        give my best. I enjoy learning new things and constantly growing
+                        in the world of software development.
+                    </p>
+                </div>
             </div>
         </div>
+    </div>
+
+    <!-- HUD: bottom corners (last slide: the trail ends here) -->
+    <div
+        aria-hidden="true"
+        class="relative z-20 mx-auto flex w-full max-w-screen-lg items-center justify-between font-mono text-[0.625rem] uppercase tracking-[0.2em] text-secondary"
+        data-reveal
+    >
+        <span class="flex items-center gap-2">End <span>↓</span></span>
+        <span>K. Guido</span>
     </div>
 </section>
