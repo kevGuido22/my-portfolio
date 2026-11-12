@@ -52,6 +52,8 @@ const filterClasses =
         </span>
     </div>
 
+    
+
     <!-- Vitrina (owns the slide center): the stack as a collection of
          collectible runes — beveled tiles with a broken border trace,
          displayed on a centered flex-wrap like a display case. -->
@@ -60,6 +62,48 @@ const filterClasses =
     >
         <div>
             <SectionHeading index="04" title="Skills" />
+
+            <!-- Filter: switches the vitrina below it — only the matching
+                 runes stay in the accessibility tree and on screen. -->
+            <div
+                class="mt-8 mb-8 flex flex-wrap items-center justify-center gap-2.5"
+                role="group"
+                aria-label="Filter skills by area"
+                data-reveal
+            >
+                <button
+                    type="button"
+                    data-filter="all"
+                    aria-pressed="true"
+                    class={filterClasses}
+                >
+                    All
+                </button>
+                <button
+                    type="button"
+                    data-filter="frontend"
+                    aria-pressed="false"
+                    class={filterClasses}
+                >
+                    Frontend
+                </button>
+                <button
+                    type="button"
+                    data-filter="backend"
+                    aria-pressed="false"
+                    class={filterClasses}
+                >
+                    Backend
+                </button>
+                <span
+                    data-rune-count
+                    aria-live="polite"
+                    class="ml-1 font-mono text-[0.625rem] uppercase tracking-[0.2em] text-secondary"
+                >
+                    13 / 13
+                </span>
+            </div>
+
             <ul class="flex flex-wrap justify-center gap-3" data-rune-list data-reveal>
                 <SkillCard
                     index="01"
@@ -175,46 +219,6 @@ const filterClasses =
                 />
             </ul>
 
-            <!-- Filter: switches the vitrina below it — only the matching
-                 runes stay in the accessibility tree and on screen. -->
-            <div
-                class="mt-8 flex flex-wrap items-center justify-center gap-2.5"
-                role="group"
-                aria-label="Filter skills by area"
-                data-reveal
-            >
-                <button
-                    type="button"
-                    data-filter="all"
-                    aria-pressed="true"
-                    class={filterClasses}
-                >
-                    All
-                </button>
-                <button
-                    type="button"
-                    data-filter="frontend"
-                    aria-pressed="false"
-                    class={filterClasses}
-                >
-                    Frontend
-                </button>
-                <button
-                    type="button"
-                    data-filter="backend"
-                    aria-pressed="false"
-                    class={filterClasses}
-                >
-                    Backend
-                </button>
-                <span
-                    data-rune-count
-                    aria-live="polite"
-                    class="ml-1 font-mono text-[0.625rem] uppercase tracking-[0.2em] text-secondary"
-                >
-                    13 / 13
-                </span>
-            </div>
         </div>
     </div>
 
